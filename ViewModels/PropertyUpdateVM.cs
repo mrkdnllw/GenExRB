@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace GenExRB.ViewModels
 {
-    public class PropertyUpdateVM
-    {
+    public class PropertyUpdateVM{
         public int Id { get; set; }
 
         [StringLength(5, ErrorMessage = "Name length can't be more than 8.")]
@@ -21,7 +20,7 @@ namespace GenExRB.ViewModels
 
         public IFormFileCollection? PropertyPictures { get; set; }
         public List<Photo> Photos { get; set; }
-        public bool Featured { get; set; }
+        public bool? Featured { get; set; }
 
         public string FloorArea { get; set; }//for display raman so string
 
@@ -31,8 +30,8 @@ namespace GenExRB.ViewModels
         //public string Amenities { get; set; }// list ni, ang value ani depende sa ui, hard coded nalang ni sha sa ui, lessen stress sa db
         //public string Features { get; set; }//checklist ni, hard coded sa ui, json string nalang ni sha
         public string Bedroom { get; set; }//number ni, for informational so string
-        public bool ToiletAndBatch { get; set; }//true or false lang 
-        public bool CarPark { get; set; }//t or f lang
+        public bool ToiletAndBath { get; set; }//true or false lang 
+        public bool? CarPark { get; set; }//t or f lang
         public int LocationId { get; set; }
         public string City { get; set; }
         public string Zip { get; set; }
@@ -69,11 +68,14 @@ namespace GenExRB.ViewModels
         public bool Condo { get; set; }
         public bool Lot { get; set; }
 
-        public Decimal? Price { get; set; }
+        public Decimal Price { get; set; }
 
 
-        public bool Buy { get; set; }
-        public bool Rent { get; set; }
+       // public bool Buy { get; set; }
+        //public bool Rent { get; set; }
+
+        public Cat3 Category3 { get; set; }
+        public Cat1 Category1 { get; set; }
 
 
     }

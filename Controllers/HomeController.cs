@@ -56,8 +56,8 @@ namespace GenExRB.Controllers
                     Photos = item.Photos,
                     Price = item.Price,
                     Featured=item.Featured,
-                    Buy=item.Buy,
-                    Rent= item.Rent,
+                    Category3=item.Category3,
+                    
                     District = item.District
                     
                 });

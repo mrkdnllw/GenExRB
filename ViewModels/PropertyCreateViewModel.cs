@@ -28,7 +28,7 @@ namespace GenExRB.ViewModels
         public string Amenities { get; set; }// list ni, ang value ani depende sa ui, hard coded nalang ni sha sa ui, lessen stress sa db
         public string Features { get; set; }//checklist ni, hard coded sa ui, json string nalang ni sha
         public string Bedroom { get; set; }//number ni, for informational so string
-        public bool ToiletAndBatch { get; set; }//true or false lang 
+        public bool ToiletAndBath { get; set; }//true or false lang 
         public bool CarPark { get; set; }//t or f lang
         public string City { get;  set; }
         public string Zip { get; set; }

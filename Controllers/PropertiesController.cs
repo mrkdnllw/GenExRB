@@ -152,7 +152,7 @@ namespace GenExRB.Controllers
                     ReservationFee = model.ReservationFee,
                     Bedroom = model.Bedroom,
                     CarPark = model.CarPark,
-                    ToiletAndBatch = model.ToiletAndBatch,
+                    ToiletAndBath = model.ToiletAndBath,
                     Category1 = model.Category1
 
                 };
@@ -267,8 +267,7 @@ namespace GenExRB.Controllers
                     Photos = item.Photos,
                     Price = item.Price,
                     Featured = item.Featured,
-                    Buy = item.Buy,
-                    Rent = item.Rent,
+                    Category3 = item.Category3, //buy/rent ni nga category
                     District = item.District
 
                 });
@@ -312,8 +311,7 @@ namespace GenExRB.Controllers
                     Photos = item.Photos,
                     Price = item.Price,
                     Featured = item.Featured,
-                    Buy = item.Buy,
-                    Rent = item.Rent,
+                    Category3 = item.Category3,
                     District = item.District
 
                 });
@@ -378,27 +376,30 @@ namespace GenExRB.Controllers
                 LotArea = property.LotArea,
                 ReservationFee = property.ReservationFee,
                 Bedroom = property.Bedroom,
-                ToiletAndBatch = property.ToiletAndBatch,
+                ToiletAndBath = property.ToiletAndBath,
                 CarPark = property.CarPark,
-               // City = property.Location.City,
-                //Zip = property.Location.Zip,
-                //StreetAddress = property.Location.StreetAddress, //aka street name
-              //  Brgy = property.Location.Brgy,
+                LocationId=property.Location.Id,
+                City = property.Location.City,
+                Zip = property.Location.Zip,
+                StreetAddress = property.Location.StreetAddress, //aka street name
+                Brgy = property.Location.Brgy,
+                AmenPrefId= property.Amenities.Id,
                 Amenity1 = property.Amenities.Amenity1,//was with [0]
                 Amenity2 = property.Amenities.Amenity2,
                 Amenity3 = property.Amenities.Amenity3,
                 Amenity4 = property.Amenities.Amenity4,
                 Amenity5 = property.Amenities.Amenity5,
 
+                FeaturesPrefId = property.Features.Id,
                 Feature1 = property.Features.Feature1,
                 Feature2 = property.Features.Feature2,
                 Feature3 = property.Features.Feature3,
                 Feature4 = property.Features.Feature4,
                 Feature5 = property.Features.Feature5,
                 PropertyPictures = null,
-                Buy= property.Buy,
-                Rent=property.Rent,
-                Price=property.Price
+                Category3 = property.Category3,
+                Price=property.Price,
+                Category1 = property.Category1
 
 
 
@@ -436,10 +437,10 @@ namespace GenExRB.Controllers
                     ReservationFee = model.ReservationFee,
                     Bedroom = model.Bedroom,
                     CarPark = model.CarPark,
-                    ToiletAndBatch = model.ToiletAndBatch,
-                    Buy=model.Buy,
-                    Rent=model.Rent,
-                    Price=model.Price
+                    ToiletAndBath = model.ToiletAndBath,
+                    
+                    Price=model.Price,
+                    Category1=model.Category1
                 };
 
                 _propertyRepository.Update(property);
@@ -447,7 +448,7 @@ namespace GenExRB.Controllers
                 _locationService.Update(new Location()
                 {
 
-                    Id = model.AmenPrefId,
+                    Id = model.LocationId,
                     StreetAddress = model.StreetAddress,
                     City = model.City,
                     Zip = model.Zip,

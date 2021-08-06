@@ -41,8 +41,8 @@
 
 
         <div class="">
-            <label asp-for="ToiletAndBatch" class=""> </label>
-            <input asp-for="ToiletAndBatch" class="" type="checkbox" />
+            <label asp-for="ToiletAndBath" class=""> </label>
+            <input asp-for="ToiletAndBath" class="" type="checkbox" />
         </div>
 
         <div class="">
@@ -74,6 +74,10 @@
         <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
         <!-- Location fields to be added-->
         <div class="">
+            <label asp-for="LocationId" class=""></label>
+            <input asp-for="LocationId" class="" type="hidden" />
+        </div>
+        <div class="">
             <label asp-for="StreetAddress" class=""></label>
             <input asp-for="StreetAddress" class="" />
         </div>
@@ -92,6 +96,14 @@
 
         <div class="">
             <p><b>AMENITIES</b></p>
+            <div class="">
+                <label asp-for="AmenPrefId" class=""></label>
+                <input asp-for="AmenPrefId" class="" type="hidden" />
+            </div>
+            <div class="">
+                <label asp-for="Amenity1" class=""> </label>
+                <input asp-for="Amenity1" class="" type="checkbox" />
+            </div>
             <div class="">
                 <label asp-for="Amenity1" class=""> </label>
                 <input asp-for="Amenity1" class="" type="checkbox" />
@@ -118,6 +130,10 @@
         <div class="">
             <p><b>FEATURES</b></p>
             <div class="">
+                <div class="">
+                    <label asp-for="FeaturesPrefId" class=""></label>
+                    <input asp-for="FeaturesPrefId" class="" type="hidden" />
+                </div>
                 <label asp-for="Feature1" class=""> </label>
                 <input asp-for="Feature1" class="" type="checkbox" />
             </div>
@@ -179,14 +195,23 @@
             <input asp-for="Price" class="" />
         </div>
 
+
+
+       
+        <!--para sa buy/rent ni nga option-->
         <div class="">
-            <label asp-for="Buy" class=""></label>
-            <input asp-for="Buy" class="" />
+            <label asp-for="Category3" class=""></label>
+            <select asp-for="Category3" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat3)).ToList()
+)">
+            </select>
         </div>
 
+
         <div class="">
-            <label asp-for="Rent" class=""></label>
-            <input asp-for="Rent" class="" />
+            <label asp-for="Category1" class=""></label>
+            <select asp-for="Category1" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat1)).ToList()
+)">
+            </select>
         </div>
 
         <!--end/close sa edit-->

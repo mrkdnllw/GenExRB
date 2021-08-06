@@ -42,16 +42,20 @@
                                         <a href="#" class="right2">
 
                                             @{
-
-                                                if (property.Featured)
+                                                if (property.Featured != null)
                                                 {
+                                                    if (property.Featured == true)
+                                                    {
 
-                                                    <span class="btn btn-primary">featured</span>
+                                                        <span class="btn btn-primary">featured</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="btn btn-primary">not featured</span>
+                                                    }
                                                 }
-                                                else
-                                                {
-                                                    <span class="btn btn-primary">not featured</span>
-                                                }
+
+
                                             }
                                         </a>
 
@@ -59,12 +63,12 @@
 
                                             @{
 
-                                                if (property.Buy)
+                                                if (property.Category3 == Cat3.Buy)
                                                 {
 
                                                     <span class="btn btn-primary">Buy</span>
                                                 }
-                                                else if(property.Rent)
+                                                else if(property.Category3 == Cat3.Rent)
                                                 {
                                                     <span class="btn btn-primary">Rent</span>
                                                 }
@@ -202,7 +206,7 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == "cc")
+                            if (property.District == District.CC)
                             {
 
                                 if (property.Photos != null)
@@ -259,7 +263,7 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == "mandaue")
+                            if (property.District == District.Mandaue)
                             {
 
                                 if (property.Photos != null)
@@ -314,7 +318,7 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == "lapu")
+                            if (property.District == District.Lapulapu)
                             {
 
                                 if (property.Photos != null)
@@ -370,7 +374,7 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == "north")
+                            if (property.District == District.North)
                             {
 
                                 if (property.Photos != null)
@@ -426,7 +430,7 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == "south")
+                            if (property.District == District.South)
                             {
 
                                 if (property.Photos != null)

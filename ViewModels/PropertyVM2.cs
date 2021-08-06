@@ -14,11 +14,10 @@ namespace GenExRB.ViewModels
 
         public List<Photo>? Photos { get; set; }
         public Decimal? Price { get; set; }
-        public bool Featured { get; set; }
+        public bool? Featured { get; set; }
+        public Cat3 Category3 { get; set; }
 
-        public bool Buy { get; set; }
-        public bool Rent { get; set; }
-        public string? District { get; set; }
+        public District? District { get; set; }
 
     }
 }

@@ -25,11 +25,13 @@ namespace GenExRB.Models
 		{
             //modelBuilder.Seed();
 
+            //one to one rel
             modelBuilder.Entity<Property>()
         .HasOne(a => a.Amenities)
         .WithOne(b => b.Property)
         .HasForeignKey<AmenitiesPreference>(b => b.PropertyRef);
 
+            //one to one rel
             modelBuilder.Entity<Property>()
         .HasOne(a => a.Features)
         .WithOne(b => b.Property)

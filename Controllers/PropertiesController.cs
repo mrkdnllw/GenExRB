@@ -399,7 +399,9 @@ namespace GenExRB.Controllers
                 PropertyPictures = null,
                 Category3 = property.Category3,
                 Price=property.Price,
-                Category1 = property.Category1
+                Category1 = property.Category1,
+
+                Category2 = property.Category2
 
 
 
@@ -440,7 +442,9 @@ namespace GenExRB.Controllers
                     ToiletAndBath = model.ToiletAndBath,
                     
                     Price=model.Price,
-                    Category1=model.Category1
+                    Category1=model.Category1,
+                    Category2 =model.Category2,
+                    Category3 = model.Category3
                 };
 
                 _propertyRepository.Update(property);

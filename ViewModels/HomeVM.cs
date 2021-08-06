@@ -15,7 +15,7 @@ namespace GenExRB.ViewModels
         public IEnumerable<PropertyVM2> Properties { get; set; }
         public string PageTitle { get; set; }
 
-        public string? Message { get; set; }
+        public string Message { get; set; }
         public string keyword { get; set; }
 
         public int CurrentPageIndex { get; set; }

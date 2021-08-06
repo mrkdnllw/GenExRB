@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenExRB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210806163635_1236")]
-    partial class _1236
+    [Migration("20210806171542_115")]
+    partial class _115
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -151,7 +151,7 @@ namespace GenExRB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("CarPark")
+                    b.Property<bool>("CarPark")
                         .HasColumnType("bit");
 
                     b.Property<int>("Category1")

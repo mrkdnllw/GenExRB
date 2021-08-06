@@ -46,8 +46,15 @@
         </div>
 
         <div class="">
+
+            // if (Model.CarPark == true)
+            //{
             <label asp-for="CarPark" class=""> </label>
             <input asp-for="CarPark" class="" type="checkbox" />
+            //}
+
+
+
         </div>
 
 
@@ -160,44 +167,21 @@
             <label asp-for="Bedroom" class=""></label>
             <input asp-for="Bedroom" class="" />
         </div>
-        <!--start sa edit-->
-        <div class="">
-            <label asp-for="Preselling" class=""></label>
-            <input asp-for="Preselling" class="" />
-        </div>
-
-        <div class="">
-            <label asp-for="Preowned" class=""></label>
-            <input asp-for="Preowned" class="" />
-        </div>
-
-        <div class="">
-            <label asp-for="New" class=""></label>
-            <input asp-for="New" class="" />
-        </div>
 
 
-        <div class="">
-            <label asp-for="HouseAndLot" class=""></label>
-            <input asp-for="HouseAndLot" class="" />
-        </div>
-
-        <div class="">
-            <label asp-for="Condo" class=""></label>
-            <input asp-for="Condo" class="" />
-        </div>
-        <div class="">
-            <label asp-for="Lot" class=""></label>
-            <input asp-for="Lot" class="" />
-        </div>
         <div class="">
             <label asp-for="Price" class=""></label>
             <input asp-for="Price" class="" />
         </div>
 
 
+        <div class="">
+            <label asp-for="Category2" class=""></label>
+            <select asp-for="Category2" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat2)).ToList()
+)">
+            </select>
+        </div>
 
-       
         <!--para sa buy/rent ni nga option-->
         <div class="">
             <label asp-for="Category3" class=""></label>

@@ -2,7 +2,7 @@
 
 namespace GenExRB.Migrations
 {
-    public partial class _1236 : Migration
+    public partial class _115 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,7 +20,7 @@ namespace GenExRB.Migrations
                     ReservationFee = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Bedroom = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ToiletAndBath = table.Column<bool>(type: "bit", nullable: false),
-                    CarPark = table.Column<bool>(type: "bit", nullable: true),
+                    CarPark = table.Column<bool>(type: "bit", nullable: false),
                     Category1 = table.Column<int>(type: "int", nullable: false),
                     Category2 = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),

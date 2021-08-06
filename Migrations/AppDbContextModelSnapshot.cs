@@ -149,7 +149,7 @@ namespace GenExRB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("CarPark")
+                    b.Property<bool>("CarPark")
                         .HasColumnType("bit");
 
                     b.Property<int>("Category1")

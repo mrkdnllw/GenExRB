@@ -1,0 +1,14 @@
+﻿@model HomeDetailsViewModel
+
+
+@{
+    //var property = ViewData["Property"] as GenExRB.Models.Property;
+    ViewBag.Title = Model.PageTitle;
+    Layout = "_Layout2";
+}
+<p>Id: @Model.Property.Id</p>
+<p>Name : @Model.Property.Name</p>
+
+
+<p>Photo1: <img style=" width: 500px;"src="/images/properties/@Model.Property.Photos[0].Title" asp-append-version="true" /></p>
+

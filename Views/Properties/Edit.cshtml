@@ -1,0 +1,214 @@
+﻿@model PropertyUpdateVM
+    <p><b>EDIT PROPERTY</b></p>
+    <form enctype="multipart/form-data" asp-controller="properties" asp-action="update" method="post" class="">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <!--ids-->
+        <input asp-for="Id" class="" value="@Model.Id" type="hidden" />
+        <input asp-for="AmenPrefId" class="" value="@Model.AmenPrefId" type="hidden" />
+        <input asp-for="FeaturesPrefId" class="" value="@Model.FeaturesPrefId" type="hidden" />
+
+
+
+        <div class="">
+            <label asp-for="Name" class=""></label>
+            <input asp-for="Name" class="" value="@Model.Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="">
+            <label asp-for="Description" class=""></label>
+            <input asp-for="Description" class="" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <p>this lets you upload multiple photos</p>
+        <div class="">
+            <label asp-for="PropertyPictures"></label>
+            <div class="custom-file">
+                <input asp-for="PropertyPictures" class="form-control custom-file-input" />
+                <label class="custom-file-label">Choose File...</label>
+            </div>
+        </div>
+        <ul>
+
+            @foreach (var photo in Model.Photos)
+            {
+                <li><img style="width:200px" src="/images/properties/@photo.Title" /></li>
+
+            }
+        </ul>
+
+
+
+        <div class="">
+            <label asp-for="ToiletAndBatch" class=""> </label>
+            <input asp-for="ToiletAndBatch" class="" type="checkbox" />
+        </div>
+
+        <div class="">
+            <label asp-for="CarPark" class=""> </label>
+            <input asp-for="CarPark" class="" type="checkbox" />
+        </div>
+
+
+        <div class="">
+            <label asp-for="Featured" class=""> </label>
+            <input asp-for="Featured" class="" type="checkbox" />
+        </div>
+
+        <div class="">
+            <label asp-for="FloorArea" class=""></label>
+            <input asp-for="FloorArea" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="LotArea" class=""></label>
+            <input asp-for="LotArea" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="ReservationFee" class=""></label>
+            <input asp-for="ReservationFee" class="" />
+        </div>
+
+        <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
+        <!-- Location fields to be added-->
+        <div class="">
+            <label asp-for="StreetAddress" class=""></label>
+            <input asp-for="StreetAddress" class="" />
+        </div>
+        <div class="">
+            <label asp-for="City" class=""></label>
+            <input asp-for="City" class="" />
+        </div>
+        <div class="">
+            <label asp-for="Zip" class=""></label>
+            <input asp-for="Zip" class="" />
+        </div>
+        <div class="">
+            <label asp-for="Brgy" class=""></label>
+            <input asp-for="Brgy" class="" />
+        </div>
+
+        <div class="">
+            <p><b>AMENITIES</b></p>
+            <div class="">
+                <label asp-for="Amenity1" class=""> </label>
+                <input asp-for="Amenity1" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Amenity2" class=""> </label>
+                <input asp-for="Amenity2" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Amenity3" class=""> </label>
+                <input asp-for="Amenity3" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Amenity4" class=""> </label>
+                <input asp-for="Amenity4" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Amenity5" class=""> </label>
+                <input asp-for="Amenity5" class="" type="checkbox" />
+            </div>
+            <!--bunch of checklist ang Amenities-->
+        </div>
+
+        <div class="">
+            <p><b>FEATURES</b></p>
+            <div class="">
+                <label asp-for="Feature1" class=""> </label>
+                <input asp-for="Feature1" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Feature2" class=""> </label>
+                <input asp-for="Feature2" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Feature3" class=""> </label>
+                <input asp-for="Feature3" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Feature4" class=""> </label>
+                <input asp-for="Feature4" class="" type="checkbox" />
+            </div>
+            <div class="">
+                <label asp-for="Feature5" class=""> </label>
+                <input asp-for="Feature5" class="" type="checkbox" />
+            </div>
+            <!--bunch of checklist ang Amenities-->
+        </div>
+
+        <div class="">
+            <label asp-for="Bedroom" class=""></label>
+            <input asp-for="Bedroom" class="" />
+        </div>
+        <!--start sa edit-->
+        <div class="">
+            <label asp-for="Preselling" class=""></label>
+            <input asp-for="Preselling" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="Preowned" class=""></label>
+            <input asp-for="Preowned" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="New" class=""></label>
+            <input asp-for="New" class="" />
+        </div>
+
+
+        <div class="">
+            <label asp-for="HouseAndLot" class=""></label>
+            <input asp-for="HouseAndLot" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="Condo" class=""></label>
+            <input asp-for="Condo" class="" />
+        </div>
+        <div class="">
+            <label asp-for="Lot" class=""></label>
+            <input asp-for="Lot" class="" />
+        </div>
+        <div class="">
+            <label asp-for="Price" class=""></label>
+            <input asp-for="Price" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="Buy" class=""></label>
+            <input asp-for="Buy" class="" />
+        </div>
+
+        <div class="">
+            <label asp-for="Rent" class=""></label>
+            <input asp-for="Rent" class="" />
+        </div>
+
+        <!--end/close sa edit-->
+
+
+
+        <div><button type="submit">Create</button></div>
+        @section Scripts{
+            <script>
+                $(document).ready(function () {
+                    console.log('reached');
+
+                    $('.custom-file-input').on("change", function () {
+
+                        var fileName = $(this).val().split("\\").pop();
+
+                        $(this).next('.custom-file-label').html(fileName);
+
+                    });
+                });
+
+            </script>
+        }
+    </form>
+

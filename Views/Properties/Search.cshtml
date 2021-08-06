@@ -1,0 +1,152 @@
+﻿@model HomeVM
+
+@{
+    Layout = "_Layout3";
+    /*
+    LLL
+    X
+    HHH
+    X
+    x
+    */
+}
+<div id="section1">
+    @foreach (var property in Model.Properties)
+    {
+        <p>PROPERTY.NAME: @property.Name</p>
+        <p>PROPERTY.DESCRIPTION: @property.Description</p>
+
+    }
+</div>
+
+<p>SEARCH: @Model.Message</p>
+<form asp-action="search" asp-controller="properties" method="post">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+
+
+            <td>
+                @{
+                    <a href="javascript:PagerClick(1);">&lt;&lt;</a>
+                    var previousPage = Model.CurrentPageIndex - 1;
+                    if (previousPage < 1)
+                    {
+                        <a href="javascript:PagerClick(1);">Previous</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:PagerClick(@previousPage);">Previous</a>
+                    }
+
+                    var nextPage = Model.CurrentPageIndex + 1;
+                    if (nextPage > Model.PageCount)
+                    {
+                        <a href="javascript:PagerClick(@Model.PageCount);">Next</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:PagerClick(@nextPage);">Next</a>
+                    }
+
+                    <a href="javascript:PagerClick(@Model.PageCount);">&gt;&gt;</a>
+
+
+
+
+                }
+
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+    <input type="hidden" id="keyword" name="keyword" />
+
+</form>
+<script type="text/javascript">
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+
+        document.getElementById("keyword").value = document.getElementById("keywordfield").value;
+        document.forms[1].submit();
+    }
+</script>
+
+<div class="container">
+    <!-- keyword entered -->
+    <div>keyword: xx</div>
+
+    <!-- sorter -->
+    <div>
+        <label for="sort">Sort:</label>
+
+        <select name="sort" id="sort">
+            <option value="default">Default</option>
+            <option value="lowestprice">Lowest price first</option>
+            <option value="highestprice">Highest price first</option>
+            <option value="featured">Featured</option>
+
+            <option value="newfirst">Newest added properties first</option>
+
+            <option value="oldfirst">Oldest properties first</option>
+        </select>
+    </div>
+
+    <!-- save search button -->
+    <button class="btn btn-primary"><i class="fas fa-star"></i> Save search</button>
+
+</div>
+
+<!--loop ni sa cards, isorround ni og form-->
+<div class="container-fluid py-4" style="background-color: white; color: black;">
+    <p>list of properties go here</p>
+
+    <!-- cards outer div -->
+    <div>
+        <!-- c -->
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="/images/j_bg.jpg" alt="..." style="width: 220px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- cards outer div end -->
+</div>
+
+
+
+
+<!-- pagination buttons  -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+<script>
+$(document).ready(function () {
+    var anchor = document.getElementById('@Model.Section');
+    anchor.scrollIntoView(true);
+
+    //document.getElementById("@Model.Section").scrollTop -= 1000;
+    window.scrollBy(0, -90);
+    });
+
+</script>

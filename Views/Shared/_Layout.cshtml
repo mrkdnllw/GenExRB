@@ -1,0 +1,411 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<!--jquery, bootstrap-->
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/style2.css" rel="stylesheet" />
+    <style>
+        /* navbar font style */
+
+
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+
+
+    <!-- Include Froala Editor styles -->
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/froala_editor.min.css" />
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/froala_style.min.css" />
+
+    <!-- Include Froala Editor Plugins styles -->
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/char_counter.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/code_view.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/colors.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/emoticons.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/file.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/fullscreen.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/image_manager.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/image.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/line_breaker.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/table.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/video.css">
+    <link rel="stylesheet" href="~/lib/froala-wysiwyg-editor/css/plugins/markdown.css">
+
+    <!-- Include Froala Editor -->
+    <script src="~/lib/froala-wysiwyg-editor/js/froala_editor.pkgd.min.js"></script>
+
+    <!-- Include Froala Editor Plugins -->
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/align.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/char_counter.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/code_beautifier.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/code_view.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/colors.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/emoticons.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/entities.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/file.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/font_family.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/font_size.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/fullscreen.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/image.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/image_manager.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/inline_style.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/line_breaker.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/link.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/lists.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/paragraph_format.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/paragraph_style.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/quote.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/save.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/table.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/video.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/markdown.min.js"></script>
+    <script src="~/lib/froala-wysiwyg-editor/js/plugins/track_changes.min.js"></script>
+
+    <!-- End Froala -->
+</head>
+<body style="">
+
+
+
+
+
+
+    <!--menu/responsive-->
+    <nav class="navbar navbar-expand-sm  navbar-light bg-light style1 sticky-top" style="">
+
+        <a class="navbar-brand" asp-controller="home" asp-action="index">
+            <img src="/images/logo.png" alt="Logo" style="max-height: 3rem; ">
+            <span class="" style="">GENEX</span>
+        </a>
+        <a href="#"><span class=" btn btn-primary d-sm-inline d-lg-none">heloooooooooo</span></a>
+
+
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" asp-controller="home" asp-action="index">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="properties" asp-action="index2">Properties</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Sell Properties</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="properties" asp-action="sellproperties">Preselling</a>
+                        <a class="dropdown-item" asp-controller="properties" asp-action="sellproperties">New</a>
+                        <a class="dropdown-item" asp-controller="properties" asp-action="sellproperties">Pre-owned</a>
+                    </div>
+                </li>
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Genex Contractors</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="properties" asp-action="contractors">Architects</a>
+                        <a class="dropdown-item" asp-controller="properties" asp-action="contractors">Builders and Designers</a>
+                        <a class="dropdown-item" asp-controller="properties" asp-action="contractors">Interior Designers</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="home" asp-action="blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="home" asp-action="careers">Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="home" asp-action="contactus">Contact Us</a>
+                </li>
+
+                <!-- mahimo ning dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="dashboard" asp-action="index">Login</a>
+                </li>
+                <li class="nav-item socialmedia_size">
+                    <a href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+
+                    <a href="#">
+                        <i class="fab fa-youtube socialmedia_size"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-twitter socialmedia_size"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram socialmedia_size"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!--jumbotron-->
+    <!-- <div class="jumbotron text-center" style="margin-bottom:0;"> -->
+
+    <div class="jumbotron jumbotron-fluid hello1" style="position: relative;">
+        <!--form marker-->
+        <form class="" style="
+      margin-bottom: 0;
+      margin-top: 90px;
+      background-color: #2C345C;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin: 10px;
+      font-weight: 500;
+      opacity: 0.8;
+      border-radius: 5px;
+
+      color: white;
+
+    "
+              asp-controller="properties" asp-action="search" method="get">
+
+            <div class="form-group">
+
+                <input type="text" id="keywordfield" class="form-control form-control-sm mb-1" placeholder="Search by keywords" name="keyword" value="">
+            </div>
+
+            <div class="form-group">
+                <label for="selection1">Choose District:</label>
+                <select id="selection1" name="districts">
+                    <option value="any">Any</option>
+                    <option value="cebu_city">Cebu City</option>
+                    <option value="cebu_north">Cebu North</option>
+                    <option value="cebu_south">Cebu South</option>
+                    <option value="lapulapu">Lapu Lapu</option>
+                </select><br>
+            </div>
+
+            <div class="form-group">
+                <label for="selection2">Property Type:</label>
+                <select id="selection2" name="ptype">
+                    <option value="any">Any</option>
+                    <option value="single_detached">Single Detached</option>
+                    <option value="townhouse">Townhouse</option>
+                    <option value="condo">Condo</option>
+                    <option value="mansion">Mansion</option>
+                    <option value="commercial">Commercial Property</option>
+                    <option value="vacant_lot">Vacant Lot</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="selection3">Min:</label>
+                <select id="selection3" name="min">
+                    <option value="any">Any</option>
+                    <option value="5">5 Million</option>
+                    <option value="10">10 Million</option>
+                    <option value="20">20 Million</option>
+                    <option value="30">30 Million</option>
+                    <option value="40">40 Million</option>
+                    <option value="50">50 Million</option>
+                    <option value="60">60 Million</option>
+                    <option value="70">70 Million</option>
+                    <option value="80">80 Million</option>
+                    <option value="90">90 Million</option>
+                    <option value="100">100 Million</option>
+                    <option value="200">200 Million</option>
+                    <option value="300">300 Million</option>
+                    <option value="400">400 Million</option>
+                    <option value="500">500 Million</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="selection4">Max:</label>
+                <select id="selection4" name="max">
+                    <option value="any">Any</option>
+                    <option value="5">5 Million</option>
+                    <option value="10">10 Million</option>
+                    <option value="20">20 Million</option>
+                    <option value="30">30 Million</option>
+                    <option value="40">40 Million</option>
+                    <option value="50">50 Million</option>
+                    <option value="60">60 Million</option>
+                    <option value="70">70 Million</option>
+                    <option value="80">80 Million</option>
+                    <option value="90">90 Million</option>
+                    <option value="100">100 Million</option>
+                    <option value="200">200 Million</option>
+                    <option value="300">300 Million</option>
+                    <option value="400">400 Million</option>
+                    <option value="500">500 Million</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" id="clearbtn">CLEAR</button>
+            <button type="submit" class="btn btn-primary ">SEARCH</button>
+
+
+
+        </form>
+
+
+
+        <div class="p-1" style="bottom: 0; left: 0;
+        opacity: 0.7;
+        background-color: #54BCA4;
+        color: white;
+        position: absolute;
+        width: 100%;
+    ">Nunc at laoreet sem, non iaculis ante? <a asp-action="sellproperties" asp-controller="properties" id="greenbar">Fusce at mattis arcu, a tristique est.</a></div>
+    </div>
+
+    <!-- /.jumbotron -->
+    <!-- header end -->
+
+    @RenderBody()
+
+
+    <!-- footer start -->
+    <!-- footer ni -->
+
+    <div class="container-fluid  d-lg-flex flex-row hulu" style="background-color: #2C345C; padding: 30px 30px;">
+        <!-- by default block level sha kung mobile -->
+        <div class="mr-lg-5">
+            <h3>Navigation</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Properties</a></li>
+                <li><a href="#">Sell Your Properties</a></li>
+                <li><a href="#">Contractors</a></li>
+                <li><a href="#">Book a Viewing</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">My List(aka dashboard)</a></li>
+            </ul>
+
+        </div>
+
+        <div class="mr-lg-5">
+            <h3>Districts</h3>
+            <ul>
+                <li><a href="#">Cebu City</a></li>
+                <li><a href="#">Mactan/Cordova</a></li>
+                <li><a href="#">Southern Cebu</a></li>
+                <li><a href="#">Northern Cebu</a></li>
+            </ul>
+
+        </div>
+
+        <div class="mr-lg-5">
+            <h3>About Us</h3>
+            <ul>
+                <li><a href="#">Our Company</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+
+        </div>
+
+        <div class="">
+            <h3>Get in touch</h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+
+                </li>
+                <li><a class="nav-link" href="tel:5554280940"><i class="fas fa-phone"></i> Call us at 555-428-0940</a></li>
+                <li><a href="mailto:mrkdnlph@gmail.com">Email Us!</a></li>
+            </ul>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <script>
+        function deferVideo() {
+
+            //defer html5 video loading
+            $("video source").each(function () {
+                var sourceFile = $(this).attr("data-src");
+                $(this).attr("src", sourceFile);
+                var video = this.parentElement;
+                video.load();
+                // uncomment if video is not autoplay
+                //video.play();
+            });
+
+        }
+        window.onload = deferVideo;
+        $('#recipeCarousel').carousel({
+            interval: 2000
+        })
+
+        $('.carousel .carousel-item').each(function () {
+            var minPerSlide = 3;
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < minPerSlide; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+
+    </script>
+    <script src="~/js/CustomScript.js"></script>
+
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true);
+
+    }
+</body>
+</html>

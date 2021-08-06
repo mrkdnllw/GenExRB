@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}<div id="myEditor"></div>
+<button id="saveButton">Save</button>
+
+<script>
+    var editor = new FroalaEditor('#myEditor', {
+        imageUploadURL: '/froalaimgsave',
+        imageManagerLoadURL: '/fimgload',
+        // Set the save param.
+        saveParam: 'content',
+
+        // Set the save URL.
+        saveURL: '/froalasave',
+
+        // HTTP request type.
+        saveMethod: 'POST',
+
+        // Additional save params.
+        saveParams: { id: 'my_editor' },
+
+        events: {
+            'save.before': function () {
+                // Before save request is made.
+            },
+
+            'save.after': function () {
+                // After successfully save request.
+            },
+
+            'save.error': function () {
+                // Do something here.
+            }
+        }
+    })
+
+    document.querySelector('#saveButton').addEventListener("click", function () {
+        editor.save.save();
+    })
+</script>

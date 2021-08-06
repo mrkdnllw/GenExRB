@@ -1,0 +1,503 @@
+﻿@model HomeVM
+
+
+
+
+
+
+
+<!--featured properties/di lang carousel but bunch of cards lang/search results kay cards pud -->
+<section>
+    <div class="container">
+        <div class="carousel">
+            <input type="radio" name="slides" checked="checked" id="slide-1">
+            <input type="radio" name="slides" id="slide-2">
+            <input type="radio" name="slides" id="slide-3">
+            <input type="radio" name="slides" id="slide-4">
+            <input type="radio" name="slides" id="slide-5">
+            <input type="radio" name="slides" id="slide-6">
+            <ul class="carousel__slides">
+
+                @{ int counter1 = 0;}
+                @foreach (var property in Model.Properties)
+                {
+                    /*
+                    LLL
+                    HHH
+                    */
+
+                    string PhotoPathb = "";
+
+                    if (property.Photos != null)
+                    {
+                        foreach (var photo in property.Photos)
+                        {
+
+                            PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                            <li class="carousel__slide">
+                                <figure>
+                                    <div class="relative2">
+                                        <img src="@PhotoPathb" alt="">
+                                        <a href="#" class="right2">
+
+                                            @{
+
+                                                if (property.Featured)
+                                                {
+
+                                                    <span class="btn btn-primary">featured</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="btn btn-primary">not featured</span>
+                                                }
+                                            }
+                                        </a>
+
+                                        <a href="#" class="right3">
+
+                                            @{
+
+                                                if (property.Buy)
+                                                {
+
+                                                    <span class="btn btn-primary">Buy</span>
+                                                }
+                                                else if(property.Rent)
+                                                {
+                                                    <span class="btn btn-primary">Rent</span>
+                                                }
+                                            }
+                                        </a>
+
+                                        <a href="#" class="right4">
+
+                                            @{
+
+                                                if (property.Price>0)
+                                                {
+
+                                                    <span class="btn btn-primary">$@property.Price</span>
+                                                }
+                                            }
+                                        </a>
+
+                                        <a href="#" class="right5">
+                                            <span class="btn btn-primary"><i class="fab fa-facebook hello24"></i></span>
+                                            
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <h3>property name ni: @property.Name</h3>
+                                        <p>description ni: @property.Description</p>
+                                        <span class="credit">Photo: Tim Marshall</span>
+                                        <span class="btn btn-primary">hello</span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+
+                            counter1++;
+                            break;//para ni usa ra sa many photos sa property ang madisplay
+
+                        }// close foreach var photo in prop
+
+
+                        <!--default ni if wala kaabot og 6 ang featured-->
+
+
+                    } // close if
+
+                }<!--close for ni-->
+
+
+            </ul>
+            <ul class="carousel__thumbnails">
+                @{  int counter2 = 0;}
+                @foreach (var property in Model.Properties)
+                {
+                    /*
+                    LLL
+                    HHH
+                    */
+                   
+                    string PhotoPathb = "";
+
+                    if (property.Photos != null)
+                    {
+                        foreach (var photo in property.Photos)
+                        {
+
+                            PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+                                     
+                            <li>
+                                <label for="slide-@(counter2+1)"><img src="@PhotoPathb" alt=""></label>
+                            </li>
+
+                            counter2++;
+                            break;//para ni usa ra sa many photos sa property ang madisplay
+
+                        }// close foreach var photo in prop
+
+
+                        <!--default ni if wala kaabot og 6 ang featured-->
+                        
+
+                    } // close if
+
+                }<!--close for ni-->
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!--DISTRICTS-->
+<!--small overview, we at genex-->
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-5 text-center">
+            We at Genex are proud to endorse our partners. Each company was carefully selected based on our rigorous standards, and were vouched by our clients based on their stellar performance in past projects.
+
+        </div>
+
+
+    </div>
+    <!--cards -->
+    <div class="row">
+        <div class="col-12 ">
+            <ul class="nav nav-pills justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active font-weight-light " data-toggle="pill" href="#home">Cebu City</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-light" data-toggle="pill" href="#menu1">Mandaue</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-light" data-toggle="pill" href="#menu2">Lapu-lapu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-light" data-toggle="pill" href="#menu3">Cebu North</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-light" data-toggle="pill" href="#menu4">Cebu South</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!--tab pane para sa cc-->
+                <div id="home" class="container tab-pane active">
+                    <br>
+                    <div class="row ">
+                        <!--copy starts here-->
+                        @{ int counter3 = 0;}
+
+
+
+                        @foreach (var property in Model.Properties)
+                        {
+                            /*
+                            LLL
+                            HHH
+                            */
+                            string PhotoPathb = "";
+
+                            if (property.District == "cc")
+                            {
+
+                                if (property.Photos != null)
+                                {
+                                    foreach (var photo in property.Photos)
+                                    {
+                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                                        <div class="col">
+                                            <a href="https://facebook.com">
+                                                <div class="card  " style="width: 25rem;">
+                                                    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        counter3++;
+                                        break;
+                                    } // close foreach
+
+                                }// close if
+
+
+
+                            }// end if property district cc
+
+
+
+
+                        }<!--close outer foreach-->
+                        <!--copy ends here-->
+
+                    </div><!--end row-->
+
+
+
+                </div>
+                <!--tab pane para sa mandaue-->
+                <div id="menu1" class="container tab-pane fade ">
+                    <br>
+                    <div class="row ">
+                        <!--copy starts here-->
+                        @{ counter3 = 0;}
+
+
+
+                        @foreach (var property in Model.Properties)
+                        {
+                            /*
+                            LLL
+                            HHH
+                            */
+                            string PhotoPathb = "";
+
+                            if (property.District == "mandaue")
+                            {
+
+                                if (property.Photos != null)
+                                {
+                                    foreach (var photo in property.Photos)
+                                    {
+                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                                        <div class="col">
+                                            <a href="https://facebook.com">
+                                                <div class="card  " style="width: 25rem;">
+                                                    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        counter3++;
+                                        break;
+                                    } // close foreach
+
+                                }// close if
+
+
+
+                            }// end if property district cc
+
+
+
+
+                        }<!--close outer foreach-->
+                        <!--copy ends here-->
+
+                    </div><!--end row-->
+
+                </div>
+                <!--tab pane para sa lapu-->
+                <div id="menu2" class="container tab-pane fade ">
+                    <br>
+                    <div class="row ">
+                        <!--copy starts here-->
+                        @{counter3 = 0;}
+
+
+
+                        @foreach (var property in Model.Properties)
+                        {
+                            /*
+                            LLL
+                            HHH
+                            */
+                            string PhotoPathb = "";
+
+                            if (property.District == "lapu")
+                            {
+
+                                if (property.Photos != null)
+                                {
+                                    foreach (var photo in property.Photos)
+                                    {
+                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                                        <div class="col">
+                                            <a href="https://facebook.com">
+                                                <div class="card  " style="width: 25rem;">
+                                                    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        counter3++;
+                                        break;
+                                    } // close foreach
+
+                                }// close if
+
+
+
+                            }// end if property district cc
+
+
+
+
+                        }<!--close outer foreach-->
+                        <!--copy ends here-->
+
+                    </div><!--end row-->
+
+                </div>
+
+                <!--tab pane para sa north-->
+                <div id="menu3" class="container tab-pane fade ">
+                    <br>
+                    <div class="row ">
+                        <!--copy starts here-->
+                        @{counter3 = 0;}
+
+
+
+                        @foreach (var property in Model.Properties)
+                        {
+                            /*
+                            LLL
+                            HHH
+                            */
+                            string PhotoPathb = "";
+
+                            if (property.District == "north")
+                            {
+
+                                if (property.Photos != null)
+                                {
+                                    foreach (var photo in property.Photos)
+                                    {
+                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                                        <div class="col">
+                                            <a href="https://facebook.com">
+                                                <div class="card  " style="width: 25rem;">
+                                                    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        counter3++;
+                                        break;
+                                    } // close foreach
+
+                                }// close if
+
+
+
+                            }// end if property district cc
+
+
+
+
+                        }<!--close outer foreach-->
+                        <!--copy ends here-->
+
+                    </div><!--row end-->
+
+                </div>
+
+                <!--tab pane para sa south-->
+                <div id="menu4" class="container tab-pane fade ">
+                    <br>
+                    <div class="row ">
+                        <!--copy starts here-->
+                        @{counter3 = 0;}
+
+
+
+                        @foreach (var property in Model.Properties)
+                        {
+                            /*
+                            LLL
+                            HHH
+                            */
+                            string PhotoPathb = "";
+
+                            if (property.District == "south")
+                            {
+
+                                if (property.Photos != null)
+                                {
+                                    foreach (var photo in property.Photos)
+                                    {
+                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+
+                                        <div class="col">
+                                            <a href="https://facebook.com">
+                                                <div class="card  " style="width: 25rem;">
+                                                    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        counter3++;
+                                        break;
+                                    } // close foreach
+
+                                }// close if
+
+
+
+                            }// end if property district cc
+
+
+
+
+                        }<!--close outer foreach-->
+                        <!--copy ends here-->
+
+                    </div><!--end row-->
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="container-fluid">
+    <h3>blog entries show here</h3>
+    <p>...</p>
+</div>
+
+<div class="container-fluid">
+    <h3>testimonials show here</h3>
+    <p>...</p>
+</div>
+
+<!--become a genex partner-->
+<div class="container-fluid px-0">
+
+    <div class="row">
+        <div class="col mx-0 " style="padding-bottom: 120px; background-color: black; color: white;">
+            <h2 class="text-center pt-5">BECOME A GENEX PARTNER</h2>
+            <p class="text-center pt-3 pb-1">
+                We invite all reputable home builders and contractors in Metro Manila to become our partners. Simply click the button below to go to our Application page where you may submit your requirements.
+            </p>
+            <div class="row justify-content-center">
+                <button class="btn px-4" style="background-color: yellow; color: black; font-size: 2rem;">JOIN US TODAY</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

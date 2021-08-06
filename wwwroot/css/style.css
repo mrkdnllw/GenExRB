@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Open+Sans+Condensed:wght@300&display=swap');
+    
+  /* color ni sa pills */
+.nav-pills > li > a.active {
+    background-color: gray !important;
+    border-radius: 20px;
+    color: white!important;
+}
+
+.nav-pills > li > a {
+    background-color: #F4F3F2 !important;
+    border-radius: 20px !important;
+    color: gray !important;
+}
+
+
+.nav-pills > li > a{
+    color: black;
+}
+
+
+
+  .card{
+      margin-bottom: 10px;
+      
+  }
+ 
+  /*edit on 6/21*/
+  /* navbar bg color */
+  .navbar-custom {
+    background-color: #54BCA4;
+}
+
+/* Modify brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    /* color: white; */
+}
+
+/* navbar toggler border */
+/* .navbar-toggler {
+    border-color: rgb(255,255,255); */
+  } 
+
+  /* navbar toggler icon color */
+  .navbar-toggler-icon {
+    /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); */
+  }
+
+/* navbar font style */
+
+
+/* navbar link colors start */
+#collapsibleNavbar > ul > li > a,
+#collapsibleNavbar > ul > li > a:active,
+#collapsibleNavbar > ul > li > a:visited{
+    /* color: white; */
+}
+
+#collapsibleNavbar > ul > li > a:hover{
+    /* color: blue; */
+}
+
+/* navbar link colors end */
+
+.socialmedia_size{
+    font-size: 24px;;
+
+}
+
+/* social media icons */
+#collapsibleNavbar ::before {
+    color: #DCB541;
+}
+
+.jumbotron{
+    background-image: url("../images/j_bg.jpg");
+    background-size: cover;
+
+}
+
+
+/* edit 6/24 9p */
+@media (max-width: 768px) {
+    .carousel-inner .carousel-item > div {
+        display: none;
+    }
+    .carousel-inner .carousel-item > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* display 3 */
+@media (min-width: 768px) {
+    
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next {
+      transform: translateX(33.333%);
+    }
+    
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev {
+      transform: translateX(-33.333%);
+    }
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left{ 
+  transform: translateX(0);
+}
+
+
+.nav-item{
+    padding-bottom: 5px;
+}
+.hello1{
+    margin-bottom: 0;
+    background-color: white;
+}
+
+.main {
+    width: 300px;
+    height: 70px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+}
+.right {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    background-color: none;
+    color: black;
+}
+.relative {
+    position: relative;
+}
+
+.right2 {
+    position: absolute;
+    
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    background-color: none;
+    color: white;
+}
+.relative2 {
+    position: relative;
+}
+
+.right3 {
+    position: absolute;
+    
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    background-color: none;
+    color: white;
+}
+
+.right4 {
+    position: absolute;
+    
+    left: 10px;
+    bottom: 10px;
+    width: 40px;
+    background-color: none;
+    color: white;
+}
+
+.right5 {
+    position: absolute;
+    
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    background-color: none;
+    color: white;
+}
+
+/* removes hover text deco  */
+figure a, figure a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.navbar-brand span{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+
+}
+
+
+.hulu a, .hulu a:hover, .hulu h3,.hulu  h6{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+
+.hulu ul {
+    list-style: none;
+  }
+  
+  .hulu ul li::before {
+    content: "\2022";
+    color: white;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+  }

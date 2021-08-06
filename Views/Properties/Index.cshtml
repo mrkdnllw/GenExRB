@@ -1,0 +1,60 @@
+﻿@model IEnumerable<GenExRB.Models.Property>
+
+
+@foreach (var property in Model)
+{
+<div class="card" style="width: 18rem;">
+
+    @{
+        //var PhotoPathb = "/images/properties" + (property.PhotoPath ?? "noimage.png");
+        /*
+        LLL
+        HHH
+        x idisplay ang first lang nga photo if naa then break dayun
+        */
+        int counter = 0;
+        string PhotoPathb = "";
+
+        if (property.Photos != null) {
+            foreach (var photo in property.Photos)
+            {
+
+                if (counter > 0)
+                {
+                    break;
+                }
+                //if (photo != null) {
+                PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+                counter++;
+                //}// close second if
+
+            }// close foreach var photo in prop
+
+        }
+
+
+
+    } <!--end at-->
+
+    <img class="card-img-top" src="@PhotoPathb" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@property.Name </h5>
+        <p class="card-text">@property.Description</p>
+
+
+        <a class="btn btn-primary" asp-action="edit" asp-controller="properties" asp-route-id="@property.Id">edit</a>
+        <a class="btn btn-primary" asp-controller="home" asp-action="details" asp-route-id="@property.Id">view</a>
+        <a class="btn btn-primary" asp-controller="properties" asp-action="delete" asp-route-id="@property.Id">delete</a>
+    </div>
+</div>
+
+}<!--end sa foreach var property..-->
+
+
+
+
+
+
+
+
+<a asp-controller="properties" asp-action="create">create new property</a>

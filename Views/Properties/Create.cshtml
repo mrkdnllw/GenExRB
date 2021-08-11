@@ -1,12 +1,15 @@
-﻿@model PropertyCreateViewModel
+﻿@model GenExRB.ViewModels.PropertyCreateViewModel
 
 
-    <a asp-controller="properties" asp-action="index">back to list of properties</a>
-<p>Properties CRUD</p>
+<a asp-controller="properties" asp-action="index">back to list of properties</a>
+<h3>Properties CRUD</h3>
 
 
 <form enctype="multipart/form-data" asp-controller="properties" asp-action="create" method="post" class="">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
     <div class="form-group row">
         <label asp-for="Name" class=""></label>
         <input asp-for="Name" class="" />
@@ -78,55 +81,7 @@
         <input asp-for="Brgy" class="" />
     </div>
 
-    <div class="">
-        <p><b>AMENITIES</b></p>
-        <div class="">
-            <label asp-for="Amenity1" class=""> </label>
-            <input asp-for="Amenity1" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity2" class=""> </label>
-            <input asp-for="Amenity2" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity3" class=""> </label>
-            <input asp-for="Amenity3" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity4" class=""> </label>
-            <input asp-for="Amenity4" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity5" class=""> </label>
-            <input asp-for="Amenity5" class="" type="checkbox" />
-        </div>
-        <!--bunch of checklist ang Amenities-->
-    </div>
 
-    <div class="">
-        <p><b>FEATURES</b></p>
-        <div class="">
-            <label asp-for="Feature1" class=""> </label>
-            <input asp-for="Feature1" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature2" class=""> </label>
-            <input asp-for="Feature2" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature3" class=""> </label>
-            <input asp-for="Feature3" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature4" class=""> </label>
-            <input asp-for="Feature4" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature5" class=""> </label>
-            <input asp-for="Feature5" class="" type="checkbox" />
-        </div>
-        <!--bunch of checklist ang Amenities-->
-    </div>
 
     <div class="">
         <!--bunch of checklist ang Features-->
@@ -137,7 +92,7 @@
         <input asp-for="Bedroom" class="" />
     </div>
 
-  
+
 
 
 
@@ -168,6 +123,30 @@
 )">
         </select>
     </div>
+
+    <div class="form-group">
+
+
+
+        <ul id="chonchon">
+            @for (var i = 0; i < Model.FeatureData.Count; i++)
+            {
+                <li>
+                    <input type="checkbox" asp-for="@Model.FeatureData[i].Value1" />
+                    <label asp-for="@Model.FeatureData[i].Value1">@Model.FeatureData[i].Key</label>
+
+                    <!--<input type="hidden" asp-for="@Model.FeatureData[i].Id" />-->
+                    <input type="hidden" asp-for="@Model.FeatureData[i].Key" />
+                </li>
+            }
+        </ul>
+        
+        <button asp-controller="featureoption" asp-action="index">Add More Feature Options</button>
+    </div>
+
+
+
+
 
 
     <!--end/close sa edit-->

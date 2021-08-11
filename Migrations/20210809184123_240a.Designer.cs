@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenExRB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210806171542_115")]
-    partial class _115
+    [Migration("20210809184123_240a")]
+    partial class _240a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,56 @@ namespace GenExRB.Migrations
                         .IsUnique();
 
                     b.ToTable("AmenitiesPreference");
+                });
+
+            modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PropertyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyId");
+
+                    b.ToTable("FeatureData");
+                });
+
+            modelBuilder.Entity("GenExRB.Models.CustomData.FeatureOption", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FeatureOptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Key = "CCTV"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Key = "Clubhouse"
+                        });
                 });
 
             modelBuilder.Entity("GenExRB.Models.FeaturesPreference", b =>
@@ -148,28 +198,28 @@ namespace GenExRB.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bedroom")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("CarPark")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Category1")
+                    b.Property<int?>("Category1")
                         .HasColumnType("int");
 
-                    b.Property<int>("Category2")
+                    b.Property<int?>("Category2")
                         .HasColumnType("int");
 
-                    b.Property<int>("Category3")
+                    b.Property<int?>("Category3")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("District")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("Featured")
+                    b.Property<bool>("Featured")
                         .HasColumnType("bit");
 
                     b.Property<string>("FloorArea")
@@ -188,7 +238,7 @@ namespace GenExRB.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ReservationFee")
@@ -207,6 +257,17 @@ namespace GenExRB.Migrations
                     b.HasOne("GenExRB.Models.Property", "Property")
                         .WithOne("Amenities")
                         .HasForeignKey("GenExRB.Models.AmenitiesPreference", "PropertyRef")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
+                {
+                    b.HasOne("GenExRB.Models.Property", "Property")
+                        .WithMany("FeatureData")
+                        .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -248,14 +309,13 @@ namespace GenExRB.Migrations
 
             modelBuilder.Entity("GenExRB.Models.Property", b =>
                 {
-                    b.Navigation("Amenities")
-                        .IsRequired();
+                    b.Navigation("Amenities");
 
-                    b.Navigation("Features")
-                        .IsRequired();
+                    b.Navigation("FeatureData");
 
-                    b.Navigation("Location")
-                        .IsRequired();
+                    b.Navigation("Features");
+
+                    b.Navigation("Location");
 
                     b.Navigation("Photos");
                 });

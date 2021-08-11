@@ -34,9 +34,12 @@ namespace GenExRB
             services.AddScoped<IPropertyRepository, SQLPropertyRepository>();
             services.AddScoped<PhotoService>();
             services.AddScoped<LocationService>();
-            services.AddScoped<AmenitiesPreferenceService>();
-            services.AddScoped<FeaturesPreferenceService>();
-            
+            services.AddScoped<FeatureDataService>();
+           
+
+            services.AddScoped<FeatureDataService>();
+            services.AddScoped<FeatureOptionService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

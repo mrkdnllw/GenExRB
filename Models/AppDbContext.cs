@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GenExRB.Models.CustomData;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,28 +15,29 @@ namespace GenExRB.Models
 
         }
 
+        public DbSet<FeatureOption> FeatureOptions { get; set; }
+        public DbSet<FeatureData> FeatureData { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<Photo> Photos { get; set; }
 
         public DbSet<Location> Location { get; set; }
-        public DbSet<AmenitiesPreference> AmenitiesPreference { get; set; }
-        public DbSet<FeaturesPreference> FeaturesPreference { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-            //modelBuilder.Seed();
+            modelBuilder.Seed();
 
             //one to one rel
-            modelBuilder.Entity<Property>()
+           /* modelBuilder.Entity<Property>()
         .HasOne(a => a.Amenities)
         .WithOne(b => b.Property)
-        .HasForeignKey<AmenitiesPreference>(b => b.PropertyRef);
+        .HasForeignKey<AmenitiesPreference>(b => b.PropertyRef);*/
 
             //one to one rel
-            modelBuilder.Entity<Property>()
+          /*  modelBuilder.Entity<Property>()
         .HasOne(a => a.Features)
         .WithOne(b => b.Property)
-        .HasForeignKey<FeaturesPreference>(b => b.PropertyRef);
+        .HasForeignKey<FeaturesPreference>(b => b.PropertyRef);*/
 
             //one to one rel
             modelBuilder.Entity<Property>()

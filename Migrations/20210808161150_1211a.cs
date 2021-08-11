@@ -2,10 +2,24 @@
 
 namespace GenExRB.Migrations
 {
-    public partial class _115 : Migration
+    public partial class _1211a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Features",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Key = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Features", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Properties",
                 columns: table => new
@@ -13,18 +27,18 @@ namespace GenExRB.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Featured = table.Column<bool>(type: "bit", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Featured = table.Column<bool>(type: "bit", nullable: false),
                     FloorArea = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LotArea = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReservationFee = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Bedroom = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bedroom = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ToiletAndBath = table.Column<bool>(type: "bit", nullable: false),
                     CarPark = table.Column<bool>(type: "bit", nullable: false),
-                    Category1 = table.Column<int>(type: "int", nullable: false),
-                    Category2 = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Category3 = table.Column<int>(type: "int", nullable: false),
+                    Category1 = table.Column<int>(type: "int", nullable: true),
+                    Category2 = table.Column<int>(type: "int", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Category3 = table.Column<int>(type: "int", nullable: true),
                     District = table.Column<int>(type: "int", nullable: true),
                     Long = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Lat = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -126,6 +140,16 @@ namespace GenExRB.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Features",
+                columns: new[] { "Id", "Key", "Value" },
+                values: new object[] { 1, "CCTV", null });
+
+            migrationBuilder.InsertData(
+                table: "Features",
+                columns: new[] { "Id", "Key", "Value" },
+                values: new object[] { 2, "Clubhouse", null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AmenitiesPreference_PropertyRef",
                 table: "AmenitiesPreference",
@@ -154,6 +178,9 @@ namespace GenExRB.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AmenitiesPreference");
+
+            migrationBuilder.DropTable(
+                name: "Features");
 
             migrationBuilder.DropTable(
                 name: "FeaturesPreference");

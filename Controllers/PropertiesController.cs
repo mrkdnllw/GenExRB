@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Configuration;
+using GenExRB.Models.CustomData;
 
 namespace GenExRB.Controllers
 {
@@ -27,20 +28,25 @@ namespace GenExRB.Controllers
         private readonly IPropertyRepository _propertyRepository;
         private readonly PhotoService _photoService;
         private readonly LocationService _locationService;
-        private readonly AmenitiesPreferenceService _amenitiesPreferenceService;
-        private readonly FeaturesPreferenceService _featuresPreferenceService;
+        
+
+        private readonly FeatureOptionService _featureOptionsService;
+        private readonly FeatureDataService _featureDataService;
+        private readonly AppDbContext _context;
         private  static IConfiguration config;
         private readonly IWebHostEnvironment hostingEnvironment;
 
-        public PropertiesController(IPropertyRepository propertyRepository, IWebHostEnvironment hostingEnvironment, PhotoService photoService, LocationService locationService, AmenitiesPreferenceService amenitiesPreferenceService,
-            FeaturesPreferenceService featuresPreferenceService, IConfiguration config)
+        public PropertiesController(IPropertyRepository propertyRepository, IWebHostEnvironment hostingEnvironment, PhotoService photoService, LocationService locationService, IConfiguration config, FeatureOptionService featureOptionsService,
+            AppDbContext context,
+            FeatureDataService featureDataService)
         {
-
+            _featureOptionsService = featureOptionsService;
             _propertyRepository = propertyRepository;
             _photoService = photoService;
             _locationService = locationService;
-            _amenitiesPreferenceService = amenitiesPreferenceService;
-            _featuresPreferenceService = featuresPreferenceService;
+            
+            _context = context;
+            _featureDataService = featureDataService;
             PropertiesController.config = config;
             this.hostingEnvironment = hostingEnvironment;
         }
@@ -124,7 +130,38 @@ namespace GenExRB.Controllers
         [HttpGet]
         public ViewResult Create()
         {
-            return View();
+
+            //get all feature options niya ireturn sa model
+            List<FeatureOption> featureOptions = _featureOptionsService.GetAllFeatureOption().ToList<FeatureOption>();
+            /*
+             * /get all options
+             * create feature data objects niya assign key based on existing
+             * check kung naa nabay value ang specific key, otherwise, set it as false by default
+             * find sa feature data table kung ni exist naba ang key, if yes, use its Id, key og value1
+             * if wala pa ni exist, create feature data nga naay reference sa property kani nga property
+             */
+
+
+
+            List<FeatureData> fdList = new List<FeatureData>();
+
+            int id = 10;
+            foreach (var item in featureOptions) {
+                fdList.Add(new FeatureData
+                {
+                    //Id = id + 1,
+                    Key = item.Key,
+                    Value1 = false
+
+                });
+            }
+
+
+            return View(new PropertyCreateViewModel()
+            {
+                FeatureOptions = featureOptions,
+                FeatureData = fdList
+            }); ;
         }
 
         [HttpPost]
@@ -153,12 +190,25 @@ namespace GenExRB.Controllers
                     Bedroom = model.Bedroom,
                     CarPark = model.CarPark,
                     ToiletAndBath = model.ToiletAndBath,
-                    Category1 = model.Category1
+                    Category1 = model.Category1,
+                    Category2 = model.Category2,
+                    Category3 = model.Category3
 
                 };
 
                 
                 _propertyRepository.Add(property);
+
+                
+
+                foreach (var item in model.FeatureData) {
+                    _featureDataService.Add(new FeatureData
+                    {
+                        Key = item.Key,
+                        Value1 = item.Value1,
+                        Property = property
+                    });
+                }
 
                 
 
@@ -172,26 +222,7 @@ namespace GenExRB.Controllers
 
                 });
 
-                _amenitiesPreferenceService.Add(new AmenitiesPreference() { 
-                    Amenity1 = model.Amenity1,
-                    Amenity2 = model.Amenity2,
-                    Amenity3 = model.Amenity3,
-                    Amenity4 = model.Amenity4,
-                    Amenity5 = model.Amenity5,
-                    Property = property
-                 
-                });
-
-                _featuresPreferenceService.Add(new FeaturesPreference()
-                {
-                    Feature1 = model.Feature1,
-                    Feature2 = model.Feature2,
-                    Feature3 = model.Feature3,
-                    Feature4 = model.Feature4,
-                    Feature5 = model.Feature5,
-                    Property = property
-
-                });
+                
 
 
 
@@ -383,19 +414,6 @@ namespace GenExRB.Controllers
                 Zip = property.Location.Zip,
                 StreetAddress = property.Location.StreetAddress, //aka street name
                 Brgy = property.Location.Brgy,
-                AmenPrefId= property.Amenities.Id,
-                Amenity1 = property.Amenities.Amenity1,//was with [0]
-                Amenity2 = property.Amenities.Amenity2,
-                Amenity3 = property.Amenities.Amenity3,
-                Amenity4 = property.Amenities.Amenity4,
-                Amenity5 = property.Amenities.Amenity5,
-
-                FeaturesPrefId = property.Features.Id,
-                Feature1 = property.Features.Feature1,
-                Feature2 = property.Features.Feature2,
-                Feature3 = property.Features.Feature3,
-                Feature4 = property.Features.Feature4,
-                Feature5 = property.Features.Feature5,
                 PropertyPictures = null,
                 Category3 = property.Category3,
                 Price=property.Price,
@@ -460,29 +478,7 @@ namespace GenExRB.Controllers
                     Property = property
                 });// end location
 
-                _amenitiesPreferenceService.Update(new AmenitiesPreference()
-                {
-                    Id = model.AmenPrefId,
-                    Amenity1 = model.Amenity1,
-                    Amenity2 = model.Amenity2,
-                    Amenity3 = model.Amenity3,
-                    Amenity4 = model.Amenity4,
-                    Amenity5 = model.Amenity5,
-                    Property = property
-
-                });
-
-                _featuresPreferenceService.Update(new FeaturesPreference()
-                {
-                    Id = model.FeaturesPrefId,
-                    Feature1 = model.Feature1,
-                    Feature2 = model.Feature2,
-                    Feature3 = model.Feature3,
-                    Feature4 = model.Feature4,
-                    Feature5 = model.Feature5,
-                    Property = property
-
-                });
+                
 
                 if (model.PropertyPictures != null)
                 {

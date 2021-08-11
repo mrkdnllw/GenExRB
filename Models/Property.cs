@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using GenExRB.Models.CustomData;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace GenExRB.Models
         public string Description { get; set; }
         //[NotMapped]
         public List<Photo>? Photos { get; set; }
+        
+        //plural ni nga data
+        public List<FeatureData>? FeatureData { get; set; }
         public bool Featured { get; set; }
 
         public string? FloorArea { get; set; }//for display raman so string
@@ -25,8 +29,7 @@ namespace GenExRB.Models
         public string? ReservationFee { get; set; }//for display
     
         public Location? Location { get; set; }// mao ni sha ang address
-        public AmenitiesPreference? Amenities { get; set; }// list ni, ang value ani depende sa ui, hard coded nalang ni sha sa ui, lessen stress sa db
-        public FeaturesPreference? Features { get; set; }//checklist ni, hard coded sa ui, json string nalang ni sha
+        
         public string? Bedroom { get; set; }//number ni, for informational so string
         public bool ToiletAndBath { get; set; }//true or false lang 
         public bool CarPark { get; set; }//t or f lang
@@ -71,6 +74,7 @@ namespace GenExRB.Models
         //gamiton ni para sa map data
         public string? Long { get; set; }
         public string? Lat { get; set; }
+        
     }
 
     public enum Cat1 { 

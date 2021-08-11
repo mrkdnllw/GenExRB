@@ -1,4 +1,5 @@
 ﻿using GenExRB.Models;
+using GenExRB.Models.CustomData;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,7 @@ namespace GenExRB.ViewModels
         public string? LotArea { get; set; }//for display
         public string? ReservationFee { get; set; }//for display
 
-        public string? Amenities { get; set; }// list ni, ang value ani depende sa ui, hard coded nalang ni sha sa ui, lessen stress sa db
-        public string? Features { get; set; }//checklist ni, hard coded sa ui, json string nalang ni sha
+       
         public string? Bedroom { get; set; }//number ni, for informational so string
         public bool ToiletAndBath { get; set; }//true or false lang 
         public bool CarPark { get; set; }//t or f lang
@@ -35,25 +35,10 @@ namespace GenExRB.ViewModels
         public string? StreetAddress { get;  set; }
         public string? Brgy { get;  set; }
 
-        //AmenPref
-        public bool Amenity1 { get; set; }
-        public bool Amenity2 { get; set; }
-        public bool Amenity3 { get; set; }
-        public bool Amenity4 { get; set; }
-        public bool Amenity5 { get; set; }
-
-        //FeaturesPreferences
-        public bool Feature1 { get; set; }
-        public bool Feature2 { get; set; }
-        public bool Feature3 { get; set; }
-        public bool Feature4 { get; set; }
-        public bool Feature5 { get; set; }
+       
 
 
         //category1, only one should be true, so iset ang uban to false when one is true; refactor ni later
-        public bool Preselling { get; set; }
-        public bool Preowned { get; set; }
-        public bool New { get; set; }
 
         //category2
 
@@ -62,6 +47,9 @@ namespace GenExRB.ViewModels
         public Cat2? Category2 { get; set; }
         public Cat3? Category3 { get; set; }
         public Cat1? Category1 { get; set; }
+        public List<FeatureOption> FeatureOptions { get; set; }
+        //igen ni sa controller?
+        public List<FeatureData> FeatureData { get; set; }
 
     } // close class
 } // close ns

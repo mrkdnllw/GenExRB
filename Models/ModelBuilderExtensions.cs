@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using GenExRB.Models.CustomData;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,24 @@ namespace GenExRB.Models
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
+			modelBuilder.Entity<FeatureOption>().HasData(new FeatureOption
+			{ 
+				Id=1,
+				Key="CCTV"
+			
+			},
+			new FeatureOption
+			{
+				Id = 2,
+				Key = "Clubhouse"
+
+			}
+
+
+			);
+
+
+
 			//modelBuilder.Entity<Property>().HasData(
 			//new Property
 			//{

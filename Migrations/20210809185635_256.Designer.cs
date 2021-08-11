@@ -4,20 +4,55 @@ using GenExRB.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GenExRB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210809185635_256")]
+    partial class _256
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("GenExRB.Models.AmenitiesPreference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Amenity1")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Amenity2")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Amenity3")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Amenity4")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Amenity5")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PropertyRef")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyRef")
+                        .IsUnique();
+
+                    b.ToTable("AmenitiesPreference");
+                });
 
             modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
                 {
@@ -32,8 +67,8 @@ namespace GenExRB.Migrations
                     b.Property<int>("PropertyId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Value1")
-                        .HasColumnType("bit");
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -67,6 +102,39 @@ namespace GenExRB.Migrations
                             Id = 2,
                             Key = "Clubhouse"
                         });
+                });
+
+            modelBuilder.Entity("GenExRB.Models.FeaturesPreference", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Feature1")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Feature2")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Feature3")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Feature4")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Feature5")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PropertyRef")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PropertyRef")
+                        .IsUnique();
+
+                    b.ToTable("FeaturesPreference");
                 });
 
             modelBuilder.Entity("GenExRB.Models.Location", b =>
@@ -184,11 +252,33 @@ namespace GenExRB.Migrations
                     b.ToTable("Properties");
                 });
 
+            modelBuilder.Entity("GenExRB.Models.AmenitiesPreference", b =>
+                {
+                    b.HasOne("GenExRB.Models.Property", "Property")
+                        .WithOne("Amenities")
+                        .HasForeignKey("GenExRB.Models.AmenitiesPreference", "PropertyRef")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
             modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
                 {
                     b.HasOne("GenExRB.Models.Property", "Property")
                         .WithMany("FeatureData")
                         .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
+            modelBuilder.Entity("GenExRB.Models.FeaturesPreference", b =>
+                {
+                    b.HasOne("GenExRB.Models.Property", "Property")
+                        .WithOne("Features")
+                        .HasForeignKey("GenExRB.Models.FeaturesPreference", "PropertyRef")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -219,7 +309,11 @@ namespace GenExRB.Migrations
 
             modelBuilder.Entity("GenExRB.Models.Property", b =>
                 {
+                    b.Navigation("Amenities");
+
                     b.Navigation("FeatureData");
+
+                    b.Navigation("Features");
 
                     b.Navigation("Location");
 

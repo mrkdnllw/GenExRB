@@ -40,13 +40,13 @@ namespace GenExRB.Models
         public IEnumerable<Property> GetAllProperties()
         {
             //return context.Properties;
-             return context.Properties.Include(x => x.Photos).Include(y => y.Location).Include(y => y.Amenities); 
+             return context.Properties.Include(x => x.Photos).Include(y => y.Location); 
            // return context.Properties.Include(x => x.Photos).Include(y => y.Amenities);
         }
 
         public Property GetProperty(int Id)
         {
-             return context.Properties.Include(x => x.Photos).Include(x => x.Location).Include(x => x.Amenities).Include(x => x.Features).FirstOrDefault<Property>(a => a.Id == Id);
+             return context.Properties.Include(x => x.Photos).Include(x => x.Location).FirstOrDefault<Property>(a => a.Id == Id);
             //return context.Properties.Include(x => x.Photos).Include(x => x.Amenities).Include(x => x.Features).FirstOrDefault<Property>(a => a.Id == Id);
         }
 

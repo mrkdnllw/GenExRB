@@ -11,37 +11,63 @@ namespace GenExRB.ViewModels
 {
     public class PropertyCreateViewModel
     {
-        [StringLength(5, ErrorMessage = "Name length can't be more than 8.")]
-        public string Name { get; set; }
         [Required]
-        [EmailAddress]
+        public string Name { get; set; }
+
+        
         public string? Description { get; set; }
         //public Photos {get; set;} // list of photo paths ni sha 
 
         public IFormFileCollection? PropertyPictures { get; set; }
         public bool Featured { get; set; }
 
+        [Required]
+        [MinLength(1)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public string? FloorArea { get; set; }//for display raman so string
 
+        [Required]
+        [MinLength(1)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public string? LotArea { get; set; }//for display
+
+        [Required]
+        [MinLength(1)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public string? ReservationFee { get; set; }//for display
 
-       
+        [Required]
+        [MinLength(1)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public string? Bedroom { get; set; }//number ni, for informational so string
+
+        [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public bool ToiletAndBath { get; set; }//true or false lang 
+
+        [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public bool CarPark { get; set; }//t or f lang
+
+        [Required]
         public string? City { get;  set; }
+        [Required]
         public string? Zip { get; set; }
+        [Required]
         public string? StreetAddress { get;  set; }
+        [Required]
         public string? Brgy { get;  set; }
 
-       
+
 
 
         //category1, only one should be true, so iset ang uban to false when one is true; refactor ni later
 
         //category2
 
+        [Required]
+        [MinLength(1)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public Decimal? Price { get; set; }
 
         public Cat2? Category2 { get; set; }

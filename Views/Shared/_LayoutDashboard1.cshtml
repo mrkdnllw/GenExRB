@@ -1,0 +1,168 @@
+﻿<html>
+<head>
+    <title>untitled</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/dashboard-css.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Genex Realty and Brokerage</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Dashbord</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Properties</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a asp-controller="properties" asp-action="index">Properties</a>
+                            <!--diri ibutang searching of properties-->
+                        </li>
+                        <li>
+                            <a asp-controller="properties" asp-action="create">Add new property</a>
+                            <!--diri ibutang searching of properties-->
+                        </li>
+                        <li>
+                            <a href="#">Category 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Category 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Category 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+                    <ul class="collapse list-unstyled" id="usersSubmenu">
+                        <li>
+                            <a href="#">Users</a>
+                            <!--diri ibutang searching of properties-->
+                        </li>
+                        <li>
+                            <a href="#">Add user</a>
+                        </li>
+                        <li>
+                            <a href="#">Agents</a>
+                        </li>
+                        <li>
+                            <a href="#">Admins</a>
+                        </li>
+                        <li>
+                            <a href="#">External users</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#jobsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Jobs</a>
+                    <ul class="collapse list-unstyled" id="jobsSubmenu">
+                        <li>
+                            <a href="#">Jobs</a>
+                        </li>
+                        <li>
+                            <a href="#">Add new position</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#blogSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Blog</a>
+                    <ul class="collapse list-unstyled" id="blogSubmenu">
+                        <li>
+                            <a href="#">Blog posts</a>
+                        </li>
+                        <li>
+                            <a href="#">Add new blog post</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#webstatsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Web Stats/billing/help</a>
+                    <ul class="collapse list-unstyled" id="webstatsSubmenu">
+                        <li>
+                            <a href="#">Site visits for the day/month/year</a>
+                        </li>
+                        <li>
+                            <a href="#">Remaining space for files</a>
+                        </li>
+                        <li>
+                            <a href="#">Remaining space for database</a>
+                        </li>
+                        <li>
+                            <a href="#">Biling</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li>
+                <a href="#">Sample no submenu</a>
+            </li> -->
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a asp-controller="home" asp-action="index" class="download">back to front end</a>
+                </li>
+                <li>
+                    <a href="#" class="article">edit profile</a>
+                </li>
+                <li>
+                    <a href="#" class="article">logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <!-- diri maglahi -->
+        <div id="content">
+
+            <!-- start sa repeating code -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    @RenderBody()
+                </div>
+
+
+                <script>
+                    $(document).ready(function () {
+                        $('#sidebarCollapse').on('click', function () {
+                            $('#sidebar').toggleClass('active');
+                        });
+                    });
+                </script>
+                @if (IsSectionDefined("Scripts"))
+                {
+                    @RenderSection("Scripts", required: true);
+
+                }
+</body>
+</html>

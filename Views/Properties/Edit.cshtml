@@ -1,223 +1,258 @@
 ﻿@model PropertyUpdateVM
-    <p><b>EDIT PROPERTY</b></p>
-    <form enctype="multipart/form-data" asp-controller="properties" asp-action="update" method="post" class="">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <!--ids-->
-        <input asp-for="Id" class="" value="@Model.Id" type="hidden" />
-        <input asp-for="AmenPrefId" class="" value="@Model.AmenPrefId" type="hidden" />
-        <input asp-for="FeaturesPrefId" class="" value="@Model.FeaturesPrefId" type="hidden" />
+@{
+    Layout = "_LayoutDashboard1";
+    /*
+    LLL
+    X
+    HHH
+    X
+    x
+    */
+
+}
 
 
-
-        <div class="">
-            <label asp-for="Name" class=""></label>
-            <input asp-for="Name" class="" value="@Model.Name" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+            </ul>
         </div>
-        <div class="">
-            <label asp-for="Description" class=""></label>
-            <input asp-for="Description" class="" />
-            <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+</nav>
+<!-- end sa repeating code -->
+
+
+<p><b>EDIT PROPERTY</b></p>
+<form enctype="multipart/form-data" asp-controller="properties" asp-action="update" method="post" class="">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <!--ids-->
+    <input asp-for="Id" class="" value="@Model.Id" type="hidden" />
+    <input asp-for="AmenPrefId" class="" value="@Model.AmenPrefId" type="hidden" />
+    <input asp-for="FeaturesPrefId" class="" value="@Model.FeaturesPrefId" type="hidden" />
+
+
+
+    <div class="">
+        <label asp-for="Name" class=""></label>
+        <input asp-for="Name" class="" value="@Model.Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="">
+        <label asp-for="Description" class=""></label>
+        <input asp-for="Description" class="" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <p>this lets you upload multiple photos</p>
+    <div class="">
+        <label asp-for="PropertyPictures"></label>
+        <div class="custom-file">
+            <input asp-for="PropertyPictures" class="form-control custom-file-input" />
+            <label class="custom-file-label">Choose File...</label>
         </div>
+    </div>
+    <ul>
 
-        <p>this lets you upload multiple photos</p>
-        <div class="">
-            <label asp-for="PropertyPictures"></label>
-            <div class="custom-file">
-                <input asp-for="PropertyPictures" class="form-control custom-file-input" />
-                <label class="custom-file-label">Choose File...</label>
-            </div>
-        </div>
-        <ul>
+        @foreach (var photo in Model.Photos)
+        {
+            <li><img style="width:200px" src="/images/properties/@photo.Title" /></li>
 
-            @foreach (var photo in Model.Photos)
-            {
-                <li><img style="width:200px" src="/images/properties/@photo.Title" /></li>
-
-            }
-        </ul>
-
-
-
-        <div class="">
-            <label asp-for="ToiletAndBath" class=""> </label>
-            <input asp-for="ToiletAndBath" class="" type="checkbox" />
-        </div>
-
-        <div class="">
-
-            // if (Model.CarPark == true)
-            //{
-            <label asp-for="CarPark" class=""> </label>
-            <input asp-for="CarPark" class="" type="checkbox" />
-            //}
-
-
-
-        </div>
-
-
-        <div class="">
-            <label asp-for="Featured" class=""> </label>
-            <input asp-for="Featured" class="" type="checkbox" />
-        </div>
-
-        <div class="">
-            <label asp-for="FloorArea" class=""></label>
-            <input asp-for="FloorArea" class="" />
-        </div>
-
-        <div class="">
-            <label asp-for="LotArea" class=""></label>
-            <input asp-for="LotArea" class="" />
-        </div>
-
-        <div class="">
-            <label asp-for="ReservationFee" class=""></label>
-            <input asp-for="ReservationFee" class="" />
-        </div>
-
-        <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
-        <!-- Location fields to be added-->
-        <div class="">
-            <label asp-for="LocationId" class=""></label>
-            <input asp-for="LocationId" class="" type="hidden" />
-        </div>
-        <div class="">
-            <label asp-for="StreetAddress" class=""></label>
-            <input asp-for="StreetAddress" class="" />
-        </div>
-        <div class="">
-            <label asp-for="City" class=""></label>
-            <input asp-for="City" class="" />
-        </div>
-        <div class="">
-            <label asp-for="Zip" class=""></label>
-            <input asp-for="Zip" class="" />
-        </div>
-        <div class="">
-            <label asp-for="Brgy" class=""></label>
-            <input asp-for="Brgy" class="" />
-        </div>
-
-        <div class="">
-            <p><b>AMENITIES</b></p>
-            <div class="">
-                <label asp-for="AmenPrefId" class=""></label>
-                <input asp-for="AmenPrefId" class="" type="hidden" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity1" class=""> </label>
-                <input asp-for="Amenity1" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity1" class=""> </label>
-                <input asp-for="Amenity1" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity2" class=""> </label>
-                <input asp-for="Amenity2" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity3" class=""> </label>
-                <input asp-for="Amenity3" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity4" class=""> </label>
-                <input asp-for="Amenity4" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Amenity5" class=""> </label>
-                <input asp-for="Amenity5" class="" type="checkbox" />
-            </div>
-            <!--bunch of checklist ang Amenities-->
-        </div>
-
-        <div class="">
-            <p><b>FEATURES</b></p>
-            <div class="">
-                <div class="">
-                    <label asp-for="FeaturesPrefId" class=""></label>
-                    <input asp-for="FeaturesPrefId" class="" type="hidden" />
-                </div>
-                <label asp-for="Feature1" class=""> </label>
-                <input asp-for="Feature1" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Feature2" class=""> </label>
-                <input asp-for="Feature2" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Feature3" class=""> </label>
-                <input asp-for="Feature3" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Feature4" class=""> </label>
-                <input asp-for="Feature4" class="" type="checkbox" />
-            </div>
-            <div class="">
-                <label asp-for="Feature5" class=""> </label>
-                <input asp-for="Feature5" class="" type="checkbox" />
-            </div>
-            <!--bunch of checklist ang Amenities-->
-        </div>
-
-        <div class="">
-            <label asp-for="Bedroom" class=""></label>
-            <input asp-for="Bedroom" class="" />
-        </div>
-
-
-        <div class="">
-            <label asp-for="Price" class=""></label>
-            <input asp-for="Price" class="" />
-        </div>
-
-
-        <div class="">
-            <label asp-for="Category2" class=""></label>
-            <select asp-for="Category2" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat2)).ToList()
-)">
-            </select>
-        </div>
-
-        <!--para sa buy/rent ni nga option-->
-        <div class="">
-            <label asp-for="Category3" class=""></label>
-            <select asp-for="Category3" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat3)).ToList()
-)">
-            </select>
-        </div>
-
-
-        <div class="">
-            <label asp-for="Category1" class=""></label>
-            <select asp-for="Category1" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat1)).ToList()
-)">
-            </select>
-        </div>
-
-        <!--end/close sa edit-->
-
-
-
-        <div><button type="submit">Create</button></div>
-        @section Scripts{
-            <script>
-                $(document).ready(function () {
-                    console.log('reached');
-
-                    $('.custom-file-input').on("change", function () {
-
-                        var fileName = $(this).val().split("\\").pop();
-
-                        $(this).next('.custom-file-label').html(fileName);
-
-                    });
-                });
-
-            </script>
         }
-    </form>
+    </ul>
+
+
+
+    <div class="">
+        <label asp-for="ToiletAndBath" class=""> </label>
+        <input asp-for="ToiletAndBath" class="" type="checkbox" />
+    </div>
+
+    <div class="">
+
+        // if (Model.CarPark == true)
+        //{
+        <label asp-for="CarPark" class=""> </label>
+        <input asp-for="CarPark" class="" type="checkbox" />
+        //}
+
+
+
+    </div>
+
+
+    <div class="">
+        <label asp-for="Featured" class=""> </label>
+        <input asp-for="Featured" class="" type="checkbox" />
+    </div>
+
+    <div class="">
+        <label asp-for="FloorArea" class=""></label>
+        <input asp-for="FloorArea" class="" />
+    </div>
+
+    <div class="">
+        <label asp-for="LotArea" class=""></label>
+        <input asp-for="LotArea" class="" />
+    </div>
+
+    <div class="">
+        <label asp-for="ReservationFee" class=""></label>
+        <input asp-for="ReservationFee" class="" />
+    </div>
+
+    <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
+    <!-- Location fields to be added-->
+    <div class="">
+        <label asp-for="LocationId" class=""></label>
+        <input asp-for="LocationId" class="" type="hidden" />
+    </div>
+    <div class="">
+        <label asp-for="StreetAddress" class=""></label>
+        <input asp-for="StreetAddress" class="" />
+    </div>
+    <div class="">
+        <label asp-for="City" class=""></label>
+        <input asp-for="City" class="" />
+    </div>
+    <div class="">
+        <label asp-for="Zip" class=""></label>
+        <input asp-for="Zip" class="" />
+    </div>
+    <div class="">
+        <label asp-for="Brgy" class=""></label>
+        <input asp-for="Brgy" class="" />
+    </div>
+
+    <div class="">
+        <p><b>AMENITIES</b></p>
+        <div class="">
+            <label asp-for="AmenPrefId" class=""></label>
+            <input asp-for="AmenPrefId" class="" type="hidden" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity1" class=""> </label>
+            <input asp-for="Amenity1" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity1" class=""> </label>
+            <input asp-for="Amenity1" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity2" class=""> </label>
+            <input asp-for="Amenity2" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity3" class=""> </label>
+            <input asp-for="Amenity3" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity4" class=""> </label>
+            <input asp-for="Amenity4" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Amenity5" class=""> </label>
+            <input asp-for="Amenity5" class="" type="checkbox" />
+        </div>
+        <!--bunch of checklist ang Amenities-->
+    </div>
+
+    <div class="">
+        <p><b>FEATURES</b></p>
+        <div class="">
+            <div class="">
+                <label asp-for="FeaturesPrefId" class=""></label>
+                <input asp-for="FeaturesPrefId" class="" type="hidden" />
+            </div>
+            <label asp-for="Feature1" class=""> </label>
+            <input asp-for="Feature1" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Feature2" class=""> </label>
+            <input asp-for="Feature2" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Feature3" class=""> </label>
+            <input asp-for="Feature3" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Feature4" class=""> </label>
+            <input asp-for="Feature4" class="" type="checkbox" />
+        </div>
+        <div class="">
+            <label asp-for="Feature5" class=""> </label>
+            <input asp-for="Feature5" class="" type="checkbox" />
+        </div>
+        <!--bunch of checklist ang Amenities-->
+    </div>
+
+    <div class="">
+        <label asp-for="Bedroom" class=""></label>
+        <input asp-for="Bedroom" class="" />
+    </div>
+
+
+    <div class="">
+        <label asp-for="Price" class=""></label>
+        <input asp-for="Price" class="" />
+    </div>
+
+
+    <div class="">
+        <label asp-for="Category2" class=""></label>
+        <select asp-for="Category2" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat2)).ToList()
+)">
+        </select>
+    </div>
+
+    <!--para sa buy/rent ni nga option-->
+    <div class="">
+        <label asp-for="Category3" class=""></label>
+        <select asp-for="Category3" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat3)).ToList()
+)">
+        </select>
+    </div>
+
+
+    <div class="">
+        <label asp-for="Category1" class=""></label>
+        <select asp-for="Category1" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat1)).ToList()
+)">
+        </select>
+    </div>
+
+    <!--end/close sa edit-->
+
+
+
+    <div><button type="submit">Create</button></div>
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                console.log('reached');
+
+                $('.custom-file-input').on("change", function () {
+
+                    var fileName = $(this).val().split("\\").pop();
+
+                    $(this).next('.custom-file-label').html(fileName);
+
+                });
+            });
+
+        </script>
+    }
+</form>
 

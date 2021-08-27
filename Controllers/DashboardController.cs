@@ -12,7 +12,8 @@ namespace GenExRB.Controllers
         [Route("/dashboard")]
         public IActionResult Index()
         {
-            return View();
+            //return View();
+            return View("Index1");
         }
     }
 }

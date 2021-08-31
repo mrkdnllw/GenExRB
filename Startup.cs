@@ -27,7 +27,11 @@ namespace GenExRB
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("PropertyDBConnection")));
+            //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("PropertyDBConnection")));
+
+
+            services.AddDbContextPool<AppDbContext>(options =>
+        options.UseSqlServer(_config.GetConnectionString("MyDbConnection")));
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
             //services.AddSingleton<IPropertyRepository, MockPropertyRepository>();

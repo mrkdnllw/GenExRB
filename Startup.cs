@@ -35,7 +35,7 @@ namespace GenExRB
             services.AddScoped<PhotoService>();
             services.AddScoped<LocationService>();
             services.AddScoped<FeatureDataService>();
-           
+
 
             services.AddScoped<FeatureDataService>();
             services.AddScoped<FeatureOptionService>();

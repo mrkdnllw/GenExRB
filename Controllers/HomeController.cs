@@ -39,7 +39,7 @@ namespace GenExRB.Controllers
             _propertyRepository = propertyRepository;
         }
 
-        [Route("/")]
+        
         public ViewResult Index()
         {
 
@@ -69,7 +69,7 @@ namespace GenExRB.Controllers
                 PageTitle = "sample ni"
             };
             //ViewBag.Title = "Index ni, sample page title";
-            return View(model);
+            return View("Index", model);
 
         }
 

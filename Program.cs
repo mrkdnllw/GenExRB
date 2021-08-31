@@ -22,5 +22,8 @@ namespace GenExRB
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+   
+       
     }
 }

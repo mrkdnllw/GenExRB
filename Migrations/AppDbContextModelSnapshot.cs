@@ -15,8 +15,8 @@ namespace GenExRB.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
@@ -191,8 +191,6 @@ namespace GenExRB.Migrations
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("GenExRB.Models.Location", b =>
@@ -202,8 +200,6 @@ namespace GenExRB.Migrations
                         .HasForeignKey("GenExRB.Models.Location", "PropertyRef")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("GenExRB.Models.Photo", b =>
@@ -213,17 +209,6 @@ namespace GenExRB.Migrations
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("GenExRB.Models.Property", b =>
-                {
-                    b.Navigation("FeatureData");
-
-                    b.Navigation("Location");
-
-                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }

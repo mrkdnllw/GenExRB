@@ -27,11 +27,17 @@ namespace GenExRB
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("PropertyDBConnection")));
+            services.AddDbContextPool<AppDbContext>(options => options
+            
+            
+            
+            //.UseSqlServer(_config.GetConnectionString("PropertyDBConnection")));
 
+            .UseSqlServer(_config.GetConnectionString("MyDbConnection")));
 
+            /*
             services.AddDbContextPool<AppDbContext>(options =>
-        options.UseSqlServer(_config.GetConnectionString("MyDbConnection")));
+        options.UseSqlServer(_config.GetConnectionString("MyDbConnection")));*/
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
             //services.AddSingleton<IPropertyRepository, MockPropertyRepository>();
@@ -54,6 +60,7 @@ namespace GenExRB
                 app.UseDeveloperExceptionPage();
             }
 
+
             //app.UseRouting();
 
             /*app.UseEndpoints(endpoints =>
@@ -63,9 +70,19 @@ namespace GenExRB
                     await context.Response.WriteAsync("Hello World!");
                 });
             });*/
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
+
+          
+
 
             /*app.Run(async (context) =>
             {

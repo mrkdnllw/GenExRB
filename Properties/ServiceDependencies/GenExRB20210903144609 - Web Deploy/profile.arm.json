@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "GenExRB20210829025030",
+      "defaultValue": "GenExRB20210903144609",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

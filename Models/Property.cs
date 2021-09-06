@@ -15,7 +15,7 @@ namespace GenExRB.Models
         public int Id { get; set; }
         
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         //[NotMapped]
         public List<Photo>? Photos { get; set; }
         
@@ -52,7 +52,7 @@ namespace GenExRB.Models
         public Cat2? Category2 { get; set; }
         
         public Decimal? Price { get; set; }
-
+        //ublic string Price { get; set; }
         /* cat3
          Buy,
         Rent

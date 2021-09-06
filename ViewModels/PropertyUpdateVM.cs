@@ -66,9 +66,9 @@ namespace GenExRB.ViewModels
         //category2
 
         public Decimal? Price { get; set; }
+        //public string Price { get; set; }
 
-
-       // public bool Buy { get; set; }
+        // public bool Buy { get; set; }
         //public bool Rent { get; set; }
 
         public Cat3? Category3 { get; set; }

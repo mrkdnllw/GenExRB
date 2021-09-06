@@ -130,18 +130,11 @@ namespace GenExRB.Controllers
         [HttpGet]
         public ViewResult Create()
         {
+            //ang feature options kay options ni sha
+            //ang feature data kay association ni sa kada property
 
             //get all feature options niya ireturn sa model
             List<FeatureOption> featureOptions = _featureOptionsService.GetAllFeatureOption().ToList<FeatureOption>();
-            /*
-             * /get all options
-             * create feature data objects niya assign key based on existing
-             * check kung naa nabay value ang specific key, otherwise, set it as false by default
-             * find sa feature data table kung ni exist naba ang key, if yes, use its Id, key og value1
-             * if wala pa ni exist, create feature data nga naay reference sa property kani nga property
-             */
-
-
 
             List<FeatureData> fdList = new List<FeatureData>();
 
@@ -161,15 +154,43 @@ namespace GenExRB.Controllers
             {
                 FeatureOptions = featureOptions,
                 FeatureData = fdList
-            }); ;
+            }); 
         }
 
         [HttpPost]
         public IActionResult Create(PropertyCreateViewModel model )
         {
 
+            List<FeatureOption> featureOptions = _featureOptionsService.GetAllFeatureOption().ToList<FeatureOption>();
+
+            List<FeatureData> fdList = new List<FeatureData>();
+
+            int id = 10;
+            foreach (var item in featureOptions)
+            {
+                fdList.Add(new FeatureData
+                {
+                    //Id = id + 1,
+                    Key = item.Key,
+                    Value1 = false
+
+                });
+            }
+
             if (ModelState.IsValid)
             {
+
+                
+
+
+                /*return View(new PropertyCreateViewModel()
+                {
+                    FeatureOptions = featureOptions,
+                    FeatureData = fdList
+                });*/
+
+
+                ////////////////////////////////////////////
                 /*
                  * LLL
                  * HHH
@@ -182,6 +203,7 @@ namespace GenExRB.Controllers
                     Description = model.Description,
 
                     Featured = model.Featured,
+                    
 
                     FloorArea = model.FloorArea,
 
@@ -192,25 +214,27 @@ namespace GenExRB.Controllers
                     ToiletAndBath = model.ToiletAndBath,
                     Category1 = model.Category1,
                     Category2 = model.Category2,
-                    Category3 = model.Category3
+                    Category3 = model.Category3,
+                    FeatureData = fdList
 
                 };
 
-                
+
                 _propertyRepository.Add(property);
 
-                
 
-                foreach (var item in model.FeatureData) {
+
+               /* foreach (var item in model.FeatureData)
+                {
                     _featureDataService.Add(new FeatureData
                     {
                         Key = item.Key,
                         Value1 = item.Value1,
                         Property = property
                     });
-                }
+                }*/
 
-                
+
 
                 _locationService.Add(new Location()
                 {
@@ -222,7 +246,7 @@ namespace GenExRB.Controllers
 
                 });
 
-                
+
 
 
 
@@ -240,24 +264,36 @@ namespace GenExRB.Controllers
                         //photos.Add(filePath); //ad ni after mabuhat ang object
 
                         //context.Photos.Add);
-                    _photoService.Add(new Photo()
-                    { //or PhotoService.Add.. same parameter
-                        Title = uniqueFileName,
-                        PhotoPath = filePath,
-                        Property = property
+                        _photoService.Add(new Photo()
+                        { //or PhotoService.Add.. same parameter
+                            Title = uniqueFileName,
+                            PhotoPath = filePath,
+                            Property = property
                         });
 
-                    file.CopyTo(new FileStream(filePath, FileMode.Create));
+                        file.CopyTo(new FileStream(filePath, FileMode.Create));
 
-                }// close foreach
-            }// close if model.PropertyPictures
+                    }// close foreach
+                }// close if model.PropertyPictures
 
                 //return RedirectToAction("Index", "Properties");
-            }// close if model state isvalid
 
 
 
-            return View("Index", _propertyRepository.GetAllProperties());
+
+
+
+                //return View("Index", _propertyRepository.GetAllProperties());
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+            // close if model state isvalid
+
+
+
+            //return View("Index", _propertyRepository.GetAllProperties());
+           
         }// close http create
 
 

@@ -59,6 +59,8 @@
         <div class="custom-file">
             <input asp-for="PropertyPictures" class="form-control custom-file-input" />
             <label class="custom-file-label">Choose File...</label>
+
+            <span asp-validation-for="PropertyPictures" class="text-danger"></span>
         </div>
     </div>
 
@@ -66,32 +68,38 @@
     <div class="">
         <label asp-for="ToiletAndBath" class=""> </label>
         <input asp-for="ToiletAndBath" class="" type="checkbox" />
+        <span asp-validation-for="ToiletAndBath" class="text-danger"></span>
     </div>
 
     <div class="">
         <label asp-for="CarPark" class=""> </label>
         <input asp-for="CarPark" class="" type="checkbox" />
+        <span asp-validation-for="CarPark" class="text-danger"></span>
     </div>
 
 
     <div class="">
         <label asp-for="Featured" class=""> </label>
         <input asp-for="Featured" class="" type="checkbox" />
+        <span asp-validation-for="Featured" class="text-danger"></span>
     </div>
 
     <div class="">
         <label asp-for="FloorArea" class=""></label>
         <input asp-for="FloorArea" class="" />
+        <span asp-validation-for="FloorArea" class="text-danger"></span>
     </div>
 
     <div class="">
         <label asp-for="LotArea" class=""></label>
         <input asp-for="LotArea" class="" />
+        <span asp-validation-for="LotArea" class="text-danger"></span>
     </div>
 
     <div class="">
         <label asp-for="ReservationFee" class=""></label>
         <input asp-for="ReservationFee" class="" />
+        <span asp-validation-for="ReservationFee" class="text-danger"></span>
     </div>
     <!--butangan ni og ajax nga crud sa picture-->
     <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
@@ -99,18 +107,22 @@
     <div class="">
         <label asp-for="StreetAddress" class=""></label>
         <input asp-for="StreetAddress" class="" />
+        <span asp-validation-for="StreetAddress" class="text-danger"></span>
     </div>
     <div class="">
         <label asp-for="City" class=""></label>
         <input asp-for="City" class="" />
+        <span asp-validation-for="City" class="text-danger"></span>
     </div>
     <div class="">
         <label asp-for="Zip" class=""></label>
         <input asp-for="Zip" class="" />
+        <span asp-validation-for="Zip" class="text-danger"></span>
     </div>
     <div class="">
         <label asp-for="Brgy" class=""></label>
         <input asp-for="Brgy" class="" />
+        <span asp-validation-for="Brgy" class="text-danger"></span>
     </div>
 
 
@@ -122,6 +134,7 @@
     <div class="">
         <label asp-for="Bedroom" class=""></label>
         <input asp-for="Bedroom" class="" />
+        <span asp-validation-for="Bedroom" class="text-danger"></span>
     </div>
 
 
@@ -131,6 +144,7 @@
     <div class="">
         <label asp-for="Price" class=""></label>
         <input asp-for="Price" class="" />
+        <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
 
@@ -139,6 +153,7 @@
         <select asp-for="Category2" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat2)).ToList()
 )">
         </select>
+        <span asp-validation-for="Category2" class="text-danger"></span>
     </div>
 
     <div class="">
@@ -146,6 +161,7 @@
         <select asp-for="Category3" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat3)).ToList()
 )">
         </select>
+        <span asp-validation-for="Category3" class="text-danger"></span>
     </div>
 
 
@@ -154,7 +170,9 @@
         <select asp-for="Category1" class="" asp-items="@new SelectList(Enum.GetNames(typeof(Cat1)).ToList()
 )">
         </select>
+        <span asp-validation-for="Category1" class="text-danger"></span>
     </div>
+
 
     <div class="form-group">
 
@@ -175,8 +193,6 @@
 
         <button asp-controller="featureoption" asp-action="index">Add More Feature Options</button>
     </div>
-
-
 
 
 

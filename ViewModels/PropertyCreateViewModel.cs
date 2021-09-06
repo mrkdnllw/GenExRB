@@ -42,11 +42,9 @@ namespace GenExRB.ViewModels
         public string? Bedroom { get; set; }//number ni, for informational so string
 
         [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public bool ToiletAndBath { get; set; }//true or false lang 
 
         [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public bool CarPark { get; set; }//t or f lang
 
         [Required]
@@ -66,7 +64,7 @@ namespace GenExRB.ViewModels
         //category2
 
         [Required]
-        [MinLength(1)]
+        //[MinLength(1)]
         [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
         public Decimal? Price { get; set; }
 

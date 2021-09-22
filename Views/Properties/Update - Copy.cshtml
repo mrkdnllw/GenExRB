@@ -40,8 +40,8 @@
 
     <!--ids-->
     <input asp-for="Id" class="" value="@Model.Id" type="hidden" />
-    <input asp-for="AmenPrefId" class="" value="@Model.AmenPrefId" type="hidden" />
-    <input asp-for="FeaturesPrefId" class="" value="@Model.FeaturesPrefId" type="hidden" />
+    @*<input asp-for="AmenPrefId" class="" value="@Model.AmenPrefId" type="hidden" />
+    <input asp-for="FeaturesPrefId" class="" value="@Model.FeaturesPrefId" type="hidden" />*@
 
 
 
@@ -134,68 +134,6 @@
     <div class="">
         <label asp-for="Brgy" class=""></label>
         <input asp-for="Brgy" class="" />
-    </div>
-
-    <div class="">
-        <p><b>AMENITIES</b></p>
-        <div class="">
-            <label asp-for="AmenPrefId" class=""></label>
-            <input asp-for="AmenPrefId" class="" type="hidden" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity1" class=""> </label>
-            <input asp-for="Amenity1" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity1" class=""> </label>
-            <input asp-for="Amenity1" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity2" class=""> </label>
-            <input asp-for="Amenity2" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity3" class=""> </label>
-            <input asp-for="Amenity3" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity4" class=""> </label>
-            <input asp-for="Amenity4" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Amenity5" class=""> </label>
-            <input asp-for="Amenity5" class="" type="checkbox" />
-        </div>
-        <!--bunch of checklist ang Amenities-->
-    </div>
-
-    <div class="">
-        <p><b>FEATURES</b></p>
-        <div class="">
-            <div class="">
-                <label asp-for="FeaturesPrefId" class=""></label>
-                <input asp-for="FeaturesPrefId" class="" type="hidden" />
-            </div>
-            <label asp-for="Feature1" class=""> </label>
-            <input asp-for="Feature1" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature2" class=""> </label>
-            <input asp-for="Feature2" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature3" class=""> </label>
-            <input asp-for="Feature3" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature4" class=""> </label>
-            <input asp-for="Feature4" class="" type="checkbox" />
-        </div>
-        <div class="">
-            <label asp-for="Feature5" class=""> </label>
-            <input asp-for="Feature5" class="" type="checkbox" />
-        </div>
-        <!--bunch of checklist ang Amenities-->
     </div>
 
     <div class="">

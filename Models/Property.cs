@@ -20,7 +20,7 @@ namespace GenExRB.Models
         public List<Photo>? Photos { get; set; }
         
         //plural ni nga data
-        public List<FeatureData>? FeatureData { get; set; }
+        public List<FeatureData>? FeatureData0 { get; set; }
         public bool Featured { get; set; }
 
         public string? FloorArea { get; set; }//for display raman so string
@@ -39,7 +39,8 @@ namespace GenExRB.Models
         Preo,
         New
          */
-        public Cat1? Category1 { get; set; }
+        //public Cat1? Category1 { get; set; }
+        public string? Category1 { get; set; }
 
 
         /* cat2
@@ -49,8 +50,9 @@ namespace GenExRB.Models
          */
 
 
-        public Cat2? Category2 { get; set; }
-        
+        //public Cat2? Category2 { get; set; }
+        public string? Category2 { get; set; }
+
         public Decimal? Price { get; set; }
         //ublic string Price { get; set; }
         /* cat3
@@ -58,8 +60,8 @@ namespace GenExRB.Models
         Rent
          
          */
-        public Cat3? Category3 { get; set; }
-
+        //public Cat3? Category3 { get; set; }
+        public string? Category3 { get; set; }
         //district category
         /*
          * North,
@@ -69,15 +71,16 @@ namespace GenExRB.Models
         Lapulapu
          
          */
-        public District? District { get; set; }
-        
+        //public District? District { get; set; }
+        public string? District { get; set; }
         //gamiton ni para sa map data
         public string? Long { get; set; }
         public string? Lat { get; set; }
+        //public bool deleted { get; set; }
         
     }
 
-    public enum Cat1 { 
+    public enum Cat1 { //ikuan nalang ni regular nga string, niya static nalang ang values
         Preselling,
         Preo,
         New

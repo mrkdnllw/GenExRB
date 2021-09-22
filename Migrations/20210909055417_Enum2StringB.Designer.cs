@@ -4,14 +4,16 @@ using GenExRB.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GenExRB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210909055417_Enum2StringB")]
+    partial class Enum2StringB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,6 +180,9 @@ namespace GenExRB.Migrations
                     b.Property<bool>("ToiletAndBath")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("deleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Properties");
@@ -186,7 +191,7 @@ namespace GenExRB.Migrations
             modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
                 {
                     b.HasOne("GenExRB.Models.Property", "Property")
-                        .WithMany("FeatureData0")
+                        .WithMany("FeatureData")
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

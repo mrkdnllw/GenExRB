@@ -1,6 +1,6 @@
 ﻿<html>
 <head>
-    <title>untitled</title>
+    <title>Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS CDN -->
@@ -28,12 +28,12 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dashbord</p>
+                <a  asp-controller="dashboard" asp-action="index"><p>Dashboard</p></a>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Properties</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a asp-controller="properties" asp-action="index">Properties</a>
+                            <a asp-controller="properties" asp-action="dashboardproperties">Properties</a>
                             <!--diri ibutang searching of properties-->
                         </li>
                         <li>
@@ -149,7 +149,8 @@
                     </button>
 
                     @RenderBody()
-                </div>
+         </div>
+
 
 
                 <script>

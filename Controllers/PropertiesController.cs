@@ -14,6 +14,7 @@ using Microsoft.Data.SqlClient;
 using System.Data;
 using Microsoft.Extensions.Configuration;
 using GenExRB.Models.CustomData;
+using System.Threading;
 
 namespace GenExRB.Controllers
 {
@@ -153,7 +154,7 @@ namespace GenExRB.Controllers
             return View(new PropertyCreateViewModel()
             {
                 FeatureOptions = featureOptions,
-                FeatureData = fdList
+                FeatureData0 = fdList
             }); 
         }
 
@@ -161,18 +162,27 @@ namespace GenExRB.Controllers
         public IActionResult Create(PropertyCreateViewModel model )
         {
 
+            /*
+             display data nga pwede fillan 
+
+            get model value para masave, pero get all value pud para mareturn sa model 
+             */
+
             List<FeatureOption> featureOptions = _featureOptionsService.GetAllFeatureOption().ToList<FeatureOption>();
 
             List<FeatureData> fdList = new List<FeatureData>();
 
-            int id = 10;
-            foreach (var item in featureOptions)
+            //int id = 10;
+            //foreach (var item in model.FeatureData0)//change ni to feature options? kay tanan man gud
+            foreach(var item in featureOptions)
             {
                 fdList.Add(new FeatureData
                 {
                     //Id = id + 1,
                     Key = item.Key,
-                    Value1 = false
+                    Value1 = item.Value1 != null? item.Value1 : false//if filled ang key, ibutang ang value, false otherwise if unfilled
+                    //so nullable nga bool?
+
 
                 });
             }
@@ -180,7 +190,7 @@ namespace GenExRB.Controllers
             if (ModelState.IsValid)
             {
 
-                
+
 
 
                 /*return View(new PropertyCreateViewModel()
@@ -203,7 +213,7 @@ namespace GenExRB.Controllers
                     Description = model.Description,
 
                     Featured = model.Featured,
-                    
+
 
                     FloorArea = model.FloorArea,
 
@@ -215,7 +225,13 @@ namespace GenExRB.Controllers
                     Category1 = model.Category1,
                     Category2 = model.Category2,
                     Category3 = model.Category3,
-                    FeatureData = fdList
+                    FeatureData0 = fdList,
+                    Price = model.Price,
+                    District = model.District,
+
+                    Lat = model.Lat,
+                    Long = model.Long
+                    //FeatureData0 = new List<FeatureData>() 
 
                 };
 
@@ -271,7 +287,11 @@ namespace GenExRB.Controllers
                             Property = property
                         });
 
-                        file.CopyTo(new FileStream(filePath, FileMode.Create));
+                        var foo1 = new FileStream(filePath, FileMode.Create);
+
+                        file.CopyTo(foo1);
+                        foo1.Close();
+                        
 
                     }// close foreach
                 }// close if model.PropertyPictures
@@ -284,7 +304,10 @@ namespace GenExRB.Controllers
 
 
                 //return View("Index", _propertyRepository.GetAllProperties());
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                //return RedirectToPage("./dashboard/properties");
+                //return RedirectToAction("Properties", "DashboardProperties");
+                return RedirectToAction("DashboardProperties", "Properties");
             }
 
             return View(model);
@@ -421,8 +444,9 @@ namespace GenExRB.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int id)
-        {
+        public IActionResult Update(int id){
+        //public IActionResult Edit(int id) { 
+        
             /*
              * LL
              * 
@@ -455,7 +479,12 @@ namespace GenExRB.Controllers
                 Price=property.Price,
                 Category1 = property.Category1,
 
-                Category2 = property.Category2
+                Category2 = property.Category2,
+                FeatureData0 = property.FeatureData0,
+                Lat = property.Lat,
+                Long = property.Long,
+                District = property.District
+                
 
 
 
@@ -468,6 +497,7 @@ namespace GenExRB.Controllers
 
         [HttpPost]
         public IActionResult Update(PropertyUpdateVM model)
+        //public IActionResult Update(PropertyUpdateVM model)
         {
             /*
              * LL
@@ -498,7 +528,12 @@ namespace GenExRB.Controllers
                     Price=model.Price,
                     Category1=model.Category1,
                     Category2 =model.Category2,
-                    Category3 = model.Category3
+                    Category3 = model.Category3,
+
+                    Lat = model.Lat,
+                    Long = model.Long,
+                    District = model.District,
+                    FeatureData0 = model.FeatureData0
                 };
 
                 _propertyRepository.Update(property);
@@ -567,13 +602,15 @@ namespace GenExRB.Controllers
 
 
                 //RedirectToAction("Index", "Properties");
+
+                return RedirectToAction("DashboardProperties", "Properties");
             }// end if model state is valid
 
 
 
-            return View("Index", _propertyRepository.GetAllProperties());
-
-
+            //return View("Index", _propertyRepository.GetAllProperties());
+            //return RedirectToAction("DashboardProperties", "Properties");
+            return View(model);
 
 
         }// close meth
@@ -581,10 +618,140 @@ namespace GenExRB.Controllers
         [Route("/properties/delete/{id}")]
         public IActionResult Delete(int id) {
 
-            _propertyRepository.Delete(id);
+            var property = _propertyRepository.GetProperty(id);
 
-            return View("Index", _propertyRepository.GetAllProperties());
+
+            try
+            {
+
+
+                if (property.Photos != null)//C
+                {
+
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images/properties");
+
+
+                    int counter = 0;
+                    foreach (var photo in property.Photos)// B
+                    {
+                        counter++;
+                        if (photo.PhotoPath != null)
+                        { // A
+
+                            string fullPath = Path.Combine(uploadsFolder, photo.Title);
+
+                            FileInfo file = new FileInfo(fullPath);
+                            while (IsFileLocked(file))
+                            {
+                                Thread.Sleep(1000);
+                                
+                            }
+                            file.Delete();
+
+
+
+
+                            /*if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                                counter++;
+                            }*/
+
+
+
+
+
+
+                        }// close A
+
+                    }// close B
+                    
+                    if (counter == property.Photos.Count)
+                    {
+                        _propertyRepository.Delete(id);
+
+
+                    }
+
+                    //_propertyRepository.Delete(id);
+
+                    /*
+                     * temporary solution kay markan as delete lang ang property niya 
+                     * later on ibatch delete lang 
+                     */
+
+                }//C
+            }
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+
+                Console.WriteLine(dirNotFound.Message);
+            }// end catch
+
+
+
+
+
+           return RedirectToAction("DashboardProperties", "Properties");
+
+
+
+
+
+
+
+
+
         } // close meth
+
+
+        [Route("/dashboard/properties/")]
+        [HttpGet()]
+        public IActionResult DashboardProperties(int id)
+        {
+            /*
+             * LLL
+             * HHH
+             * kuhaon ang values sa form nga basihan sa sort, get rani sha
+             * unsaon pagpasa value?
+             * test test
+             */
+
+
+
+            var properties = _propertyRepository.GetAllProperties();
+            ViewBag.Title = "Index ni, sample page title";
+            return View(properties);
+
+            //return View("DashboardProperties");
+        }
+
+        protected virtual bool IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
+        }
+
 
 
     }// end class

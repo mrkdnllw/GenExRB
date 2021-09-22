@@ -48,7 +48,7 @@ namespace GenExRB.Controllers
             var propertiesplusothers = _propertyRepository.GetAllProperties();
             var list = new List<PropertyVM2>();
             
-            foreach (var item in propertiesplusothers) {
+            foreach (var item  in propertiesplusothers) {
                 list.Add(new PropertyVM2()
                 {
                     Name = item.Name,
@@ -56,7 +56,7 @@ namespace GenExRB.Controllers
                     Photos = item.Photos,
                     Price = item.Price,
                     Featured=item.Featured,
-                    Category3=item.Category3,
+                    Category2=item.Category2,
                     
                     District = item.District
                     

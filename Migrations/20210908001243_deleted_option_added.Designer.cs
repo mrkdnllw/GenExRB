@@ -4,14 +4,16 @@ using GenExRB.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GenExRB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210908001243_deleted_option_added")]
+    partial class deleted_option_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,20 +137,20 @@ namespace GenExRB.Migrations
                     b.Property<bool>("CarPark")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Category1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Category1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Category2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Category2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Category3")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Category3")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("District")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("District")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Featured")
                         .HasColumnType("bit");
@@ -178,6 +180,9 @@ namespace GenExRB.Migrations
                     b.Property<bool>("ToiletAndBath")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("deleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Properties");
@@ -186,7 +191,7 @@ namespace GenExRB.Migrations
             modelBuilder.Entity("GenExRB.Models.CustomData.FeatureData", b =>
                 {
                     b.HasOne("GenExRB.Models.Property", "Property")
-                        .WithMany("FeatureData0")
+                        .WithMany("FeatureData")
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

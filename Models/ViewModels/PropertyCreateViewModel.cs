@@ -65,15 +65,26 @@ namespace GenExRB.ViewModels
 
         [Required]
         //[MinLength(1)]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
+        //[RegularExpression("^[0-9]*$", ErrorMessage = "must be numeric")]
+
+        [RegularExpression(@"[0-9]*\.[0-9]+")]
         public Decimal? Price { get; set; }
 
-        public Cat2? Category2 { get; set; }
-        public Cat3? Category3 { get; set; }
-        public Cat1? Category1 { get; set; }
+        //public Cat2? Category2 { get; set; }
+        public string Category2 { get; set; }
+        //public Cat3? Category3 { get; set; }
+        public string Category3 { get; set; }
+        //public Cat1? Category1 { get; set; }
+        public string Category1 { get; set; }
+        //public District District { get; set; }
+        public string District { get; set; }
         public List<FeatureOption> FeatureOptions { get; set; }
         //igen ni sa controller?
-        public List<FeatureData> FeatureData { get; set; }
+        public List<FeatureData> FeatureData0 { get; set; }
+
+
+        public string? Long { get; set; }
+        public string? Lat { get; set; }
 
     } // close class
 } // close ns

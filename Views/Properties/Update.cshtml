@@ -1,4 +1,5 @@
-﻿@model GenExRB.ViewModels.PropertyCreateViewModel
+﻿@model PropertyUpdateVM
+
 @{
     Layout = "_LayoutDashboard1";
     /*
@@ -8,10 +9,18 @@
     X
     x
     */
+
 }
 
 
-<!--#navsupportedcon magsugod nav partial start-->
+
+
+
+
+
+
+
+
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item active">
@@ -30,15 +39,17 @@
 </div>
     </div>
 </nav>
-<!-- end sa nav partial -->
+<!-- end sa repeating code -->
 
 
-<a asp-controller="properties" asp-action="index">back to list of properties</a>
-<h3>Properties CRUD</h3>
+<p><b>EDIT PROPERTY</b></p>
 
-@*/////////////////////////////////////////////////////////*@
 
-<form enctype="multipart/form-data" asp-controller="properties" asp-action="create" method="post" class="">
+@*///////////////////////////////////////*@
+
+
+
+<form enctype="multipart/form-data" asp-controller="properties" asp-action="update" method="post" class="">
     <div class="row dashboard">
 
 
@@ -48,7 +59,10 @@
         <div class="col-md-4 col-sm-6 dashboard-panel">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
+            <input asp-for="Id" class="" value="@Model.Id" type="hidden" />
+            @*amen pref id..
+                amen featurepre id.. removed..
+            *@
 
             <div class="form-group row">
                 <label asp-for="Name" class=""></label>
@@ -73,6 +87,23 @@
                     <span asp-validation-for="PropertyPictures" class="text-danger"></span>
                 </div>
             </div>
+            @*idisplay diri ang existing photos*@
+            <ul>
+                @{ if (Model.Photos != null)
+                    {
+                        @foreach (var photo in Model.Photos)
+                        {
+                            <li><img style="width:200px" src="/images/properties/@photo.Title" /></li>
+
+                        }
+
+                    }
+                }
+
+
+
+            </ul>
+
 
 
         </div>
@@ -116,6 +147,11 @@
             <!--butangan ni og ajax nga crud sa picture-->
             <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
             <!-- Location fields to be added-->
+            <div class="">
+                <label asp-for="LocationId" class=""></label>
+                <input asp-for="LocationId" class="" type="hidden" />
+            </div>
+
 
         </div>
 
@@ -172,15 +208,6 @@
         <div class="col-md-4 col-sm-6 dashboard-panel">
 
 
-            @*<div class="form-group">
-                <label for="cat1">Category 1:</label>
-                <select class="form-control" id="cat1">
-                    <option value="preselling">Preselling</option>
-                    <option value="preo">Preowned</option>
-                    <option value="new">New</option>
-                </select>
-            </div>*@
-
             <div class="form-group">
 
                 @{
@@ -189,23 +216,12 @@
                     cat1List.Add("Preowned");
                     cat1List.Add("New");
 
-
                 }
 
                 <label asp-for="Category1" class=""></label>
                 <select asp-for="Category1" class="" asp-items="@new SelectList(cat1List)">
                 </select>
             </div>
-
-
-            @*<div class="form-group">
-            <label for="cat2">Category 2:</label>
-            <select class="form-control" id="cat2">
-                <option value="houseandlot">House and Lot</option>
-                <option value="condo">Condo</option>
-                <option value="lot">Lot</option>
-            </select>
-        </div>*@
 
             <div class="form-group">
 
@@ -215,22 +231,12 @@
                     cat2List.Add("Condo");
                     cat2List.Add("Lot");
 
-
                 }
 
                 <label asp-for="Category2" class=""></label>
                 <select asp-for="Category2" class="" asp-items="@new SelectList(cat2List)">
                 </select>
             </div>
-
-
-            @*<div class="form-group">
-            <label for="cat3">Category 3:</label>
-            <select class="form-control" id="cat3">
-                <option value="buy">buy</option>
-                <option value="rent">rent</option>
-            </select>
-        </div>*@
 
             <div class="form-group">
 
@@ -239,7 +245,6 @@
                     cat3List.Add("Buy");
                     cat3List.Add("Rent");
 
-
                 }
 
                 <label asp-for="Category3" class=""></label>
@@ -247,18 +252,18 @@
                 </select>
             </div>
 
-
             @*<div class="form-group">
-            <label for="district">District:</label>
-            <select class="form-control" id="district">
+                    <label for="district">District:</label>
+                    <select class="form-control" id="district">
 
-                <option value="north">north</option>
-                <option value="south">south</option>
-                <option value="cc">cebu city</option>
-                <option value="mandaue">mandaue</option>
-                <option value="lapulapu">lapulapu</option>
-            </select>
-        </div>*@
+                        <option value="north">north</option>
+                        <option value="south">south</option>
+                        <option value="cc">cebu city</option>
+                        <option value="mandaue">mandaue</option>
+                        <option value="lapulapu">lapulapu</option>
+                    </select>
+                </div>*@
+
 
             <div class="form-group">
 
@@ -276,6 +281,8 @@
                 <label asp-for="District" class=""></label>
                 <select asp-for="District" class="" asp-items="@new SelectList(districtList)">
                 </select>
+
+
             </div>
 
 
@@ -296,34 +303,101 @@
 
 
 
-                <ul id="chonchon">
-                    @for (var i = 0; i < Model.FeatureData0.Count; i++)
+                @{
+
+                    if (Model.FeatureData0 != null)
                     {
-                        <li>
 
-                            <label class="" asp-for="@Model.FeatureData0[i].Value1">
-                                @Model.FeatureData0[i].Key
+                        <ul id="chonchon">
+                            @for (var i = 0; i < Model.FeatureData0.Count; i++)
+                            {
+                                <li>
 
-
-
-                            </label>
-
-                            <input type="checkbox" class="" asp-for="@Model.FeatureData0[i].Value1" />
+                                    <label class="" asp-for="@Model.FeatureData0[i].Value1">
+                                        @Model.FeatureData0[i].Key
 
 
 
-                            <!--<input type="hidden" asp-for="@Model.FeatureData0[i].Id" />-->
-                            <input type="hidden" asp-for="@Model.FeatureData0[i].Key" />
-                        </li>
+                                    </label>
+
+                                    <input type="checkbox" class="" asp-for="@Model.FeatureData0[i].Value1" />
+
+
+
+                                    <!--<input type="hidden" asp-for="@Model.FeatureData0[i].Id" />-->
+                                    <input type="hidden" asp-for="@Model.FeatureData0[i].Key" />
+                                </li>
+                            }
+                        </ul>
+
+
                     }
-                </ul>
 
-                <button class="btn btn-primary" asp-controller="featureoption" asp-action="index">Add More Feature Options</button>
-            </div>
+                }
 
 
-        </div> <!--end panel-->
+                <h6>Features:</h6>
+                <!-- diri ibutang and mga drop downs -->
 
-    </div> <!--close row div-->
-    <div><button type="submit" class="btn btn-primary">Create</button></div>
+                <div class="form-group">
+
+
+
+                    <ul id="chonchon">
+                        @{
+
+                            /*
+                            x display all options
+                            x set them according sa featuer data
+                            x so if feature data is equal to feature option, set it instead
+                                */
+
+                            if (Model.FeatureData0 != null)
+                            {
+
+                                var listfoo = Model.FeatureData0;
+
+                                /*xif wa ni exist ang option sa listfoo, display it
+
+                                x display */
+
+
+                                @for (var i = 0; i < Model.FeatureData0.Count; i++)
+                                {
+                                    <li>
+
+                                        <label class="" asp-for="@Model.FeatureData0[i].Value1">
+                                            @Model.FeatureData0[i].Key
+
+
+
+                                        </label>
+
+                                        <input type="checkbox" class="" asp-for="@Model.FeatureData0[i].Value1" />
+
+
+
+                                        <input type="hidden" asp-for="@Model.FeatureData0[i].Key" />
+                                    </li>
+                                }
+
+
+                                
+                            }
+                        }
+
+
+                    </ul>
+
+
+
+                    <button class="btn btn-primary" asp-controller="featureoption" asp-action="index">Add More Feature Options</button>
+                </div>
+
+
+            </div> <!--end panel-->
+
+        </div> <!--close row div-->
+        <div><button type="submit" class="btn btn-primary">Create</button></div>
 </form>
+

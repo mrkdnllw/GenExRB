@@ -16,9 +16,13 @@ namespace GenExRB.ViewModels
         public Decimal? Price { get; set; }
         //public string Price { get; set; }
         public bool Featured { get; set; }
-        public Cat3? Category3 { get; set; }
+        //public Cat3? Category3 { get; set; }
+        public string Category3 { get; set; }
+        public string Category2 { get; set; }
+        public string Category1 { get; set; }
 
-        public District? District { get; set; }
 
+        //public District? District { get; set; }
+        public string District { get; set; }
     }
 }

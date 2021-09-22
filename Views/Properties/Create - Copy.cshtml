@@ -1,0 +1,240 @@
+﻿@model GenExRB.ViewModels.PropertyCreateViewModel
+@{
+    Layout = "_LayoutDashboard1";
+    /*
+    LLL
+    X
+    HHH
+    X
+    xinpute
+    */
+}
+
+
+<!--#navsupportedcon magsugod nav partial start-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- end sa nav partial -->
+
+
+<a asp-controller="properties" asp-action="index">back to list of properties</a>
+<h3>Properties CRUD</h3>
+
+
+<form enctype="multipart/form-data" asp-controller="properties" asp-action="create" method="post" class="">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+    <div class="form-group row">
+        <label asp-for="Name" class=""></label>
+        <input asp-for="Name" class="" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Description" class=""></label>
+        <input asp-for="Description" class="" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <p>this lets you upload multiple photos</p>
+    <div class="">
+        <label asp-for="PropertyPictures"></label>
+        <div class="custom-file">
+            <input asp-for="PropertyPictures" class="form-control custom-file-input" />
+            <label class="custom-file-label">Choose File...</label>
+
+            <span asp-validation-for="PropertyPictures" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="">
+        <label asp-for="ToiletAndBath" class=""> </label>
+        <input asp-for="ToiletAndBath" class="" type="checkbox" />
+        <span asp-validation-for="ToiletAndBath" class="text-danger"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="CarPark" class=""> </label>
+        <input asp-for="CarPark" class="" type="checkbox" />
+        <span asp-validation-for="CarPark" class="text-danger"></span>
+    </div>
+
+
+    <div class="">
+        <label asp-for="Featured" class=""> </label>
+        <input asp-for="Featured" class="" type="checkbox" />
+        <span asp-validation-for="Featured" class="text-danger"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="FloorArea" class=""></label>
+        <input asp-for="FloorArea" class="" />
+        <span asp-validation-for="FloorArea" class="text-danger"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="LotArea" class=""></label>
+        <input asp-for="LotArea" class="" />
+        <span asp-validation-for="LotArea" class="text-danger"></span>
+    </div>
+
+    <div class="">
+        <label asp-for="ReservationFee" class=""></label>
+        <input asp-for="ReservationFee" class="" />
+        <span asp-validation-for="ReservationFee" class="text-danger"></span>
+    </div>
+    <!--butangan ni og ajax nga crud sa picture-->
+    <!--many fields ang location niya inig pasa sa controller irecreate ang Location object for it-->
+    <!-- Location fields to be added-->
+    <div class="">
+        <label asp-for="StreetAddress" class=""></label>
+        <input asp-for="StreetAddress" class="" />
+        <span asp-validation-for="StreetAddress" class="text-danger"></span>
+    </div>
+    <div class="">
+        <label asp-for="City" class=""></label>
+        <input asp-for="City" class="" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <div class="">
+        <label asp-for="Zip" class=""></label>
+        <input asp-for="Zip" class="" />
+        <span asp-validation-for="Zip" class="text-danger"></span>
+    </div>
+    <div class="">
+        <label asp-for="Brgy" class=""></label>
+        <input asp-for="Brgy" class="" />
+        <span asp-validation-for="Brgy" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="">
+        <!--bunch of checklist ang Features-->
+    </div>
+
+    <div class="">
+        <label asp-for="Bedroom" class=""></label>
+        <input asp-for="Bedroom" class="" />
+        <span asp-validation-for="Bedroom" class="text-danger"></span>
+    </div>
+
+
+
+
+
+    <div class="">
+        <label asp-for="Price" class=""></label>
+        <input asp-for="Price" class="" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+
+
+    <!--diri gibutang previous dropdown para sa category2-->
+
+    <label asp-for="Category1" class=""></label>
+    <select asp-for="Category1">
+        <option value="preselling">Preselling</option>
+        <option value="preo">Preowned</option>
+        <option value="new">New</option>
+    </select>
+
+    <label asp-for="Category2" class=""></label>
+    <select asp-for="Category2">
+        <option value="houseandlot">House and Lot</option>
+        <option value="condo">Condo</option>
+        <option value="lot">Lot</option>
+    </select>
+
+    <label asp-for="Category3" class=""></label>
+    <select asp-for="Category3">
+        <option value="buy">buy</option>
+        <option value="rent">rent</option>
+    </select>
+
+    <label asp-for="District" class=""></label>
+    <select asp-for="District">
+        <option value="north">north</option>
+        <option value="south">south</option>
+        <option value="cc">cebu city</option>
+        <option value="mandaue">mandaue</option>
+        <option value="lapulapu">lapulapu</option>
+    </select>
+
+
+    <div class="form-group row">
+        <label asp-for="Lat" class=""></label>
+        <input asp-for="Lat" class="" />
+        <span asp-validation-for="Lat" class="text-danger"></span>
+    </div>
+    <div class="form-group row">
+        <label asp-for="Long" class=""></label>
+        <input asp-for="Long" class="" />
+        <span asp-validation-for="Long" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+
+
+
+        <ul id="chonchon">
+            @for (var i = 0; i < Model.FeatureData0.Count; i++)
+            {
+                <li>
+                    <input type="checkbox" asp-for="@Model.FeatureData0[i].Value1" />
+                    <label asp-for="@Model.FeatureData0[i].Value1">@Model.FeatureData0[i].Key</label>
+
+                    <!--<input type="hidden" asp-for="@Model.FeatureData0[i].Id" />-->
+                    <input type="hidden" asp-for="@Model.FeatureData0[i].Key" />
+                </li>
+            }
+        </ul>
+
+        <button asp-controller="featureoption" asp-action="index">Add More Feature Options</button>
+    </div>
+
+
+
+
+    <!--end/close sa edit-->
+
+
+    <div><button type="submit">Create</button></div>
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                console.log('reached');
+
+                $('.custom-file-input').on("change", function () {
+
+                    var fileName = $(this).val().split("\\").pop();
+
+                    $(this).next('.custom-file-label').html(fileName);
+
+                });
+            });
+
+        </script>
+    }
+</form>
+

@@ -63,12 +63,14 @@
 
                                             @{
 
-                                                if (property.Category3 == Cat3.Buy)
+                                                //if (property.Category3 == Cat3.Buy)
+                                                if (property.Category3 == "Buy")
                                                 {
 
                                                     <span class="btn btn-primary">Buy</span>
                                                 }
-                                                else if(property.Category3 == Cat3.Rent)
+                                                //else if(property.Category3 == Cat3.Rent)
+                                                else if (property.Category3 == "Rent")
                                                 {
                                                     <span class="btn btn-primary">Rent</span>
                                                 }
@@ -206,14 +208,15 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == District.CC)
+                            //if (property.District == District.CC)
+                            if (property.District == "cc")
                             {
 
-                                if (property.Photos != null)
-                                {
-                                    foreach (var photo in property.Photos)
+                                    if (property.Photos != null)
                                     {
-                                        PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+                                        foreach (var photo in property.Photos)
+                                        {
+                                            PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
 
                                         <div class="col">
                                             <a href="https://facebook.com">
@@ -263,7 +266,8 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == District.Mandaue)
+                            //if (property.District == District.Mandaue)
+                            if (property.District == "mandaue")
                             {
 
                                 if (property.Photos != null)
@@ -318,7 +322,8 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == District.Lapulapu)
+                            //if (property.District == District.Lapulapu)
+                            if (property.District == "lapulapu")
                             {
 
                                 if (property.Photos != null)
@@ -374,7 +379,8 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == District.North)
+                            //if (property.District == District.North)
+                            if (property.District == "north")
                             {
 
                                 if (property.Photos != null)
@@ -430,7 +436,8 @@
                             */
                             string PhotoPathb = "";
 
-                            if (property.District == District.South)
+                            // if (property.District == District.South)
+                            if (property.District == "south")
                             {
 
                                 if (property.Photos != null)

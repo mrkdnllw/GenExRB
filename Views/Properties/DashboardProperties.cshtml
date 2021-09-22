@@ -1,0 +1,207 @@
+﻿@model IEnumerable<GenExRB.Models.Property>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+
+    Layout = "_LayoutDashboard1";
+}
+</div><!--required ni sha tungod sa render setup nako sa dashboard nga frontend-->
+</nav><!--required ni sha tungod sa render setup nako sa dashboard nga frontend-->
+
+
+<p><i>status messaging shows here</i></p>
+
+<p>sorting, filters and search goes here</p>
+@*<h6>shortcut links go here</h6>*@
+<button class="btn btn-primary">add new property</button>
+@*<ul >
+    <li><a href="#" style="text-decoration: none;">shortcutlink1</a></li>
+    <li><a href="#" style="text-decoration: none;">shortcutlink1</a></li>
+    <li><a href="#" style="text-decoration: none;">shortcutlink1</a></li>
+    <li><a href="#" style="text-decoration: none;">shortcutlink1</a></li>
+</ul>*@
+
+@*//////////////////////////////////////////*@
+
+
+
+<form class="form-inline" style="font-size: 12px;">
+    <div class="row dashboard optionsrow">
+        <div class="col">
+            <div class="form-group">
+                <label for="sometext1" class="mr-1">sometext1</label>
+                <input type="text" id="sometext1" class="form-control mr-1" />
+                <button class="btn btn-primary" style="font-size: 12px;">search properties</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row dashboard optionsrow ">
+        <div class="col d-inline" style="margin-top: 20px;">
+
+
+
+
+
+
+
+            <div class="form-group">
+
+                <label for="sort1" class="mr-2">sort1</label><select name="sort1" id="sort1" class="form-control mr-1" style="font-size: 12px;">
+                    <option value="1" style="padding: 10px;">option1</option>
+                    <option value="2">option2 </option>
+                    <option value="3">option 3</option>
+                    <option value="4">option 4</option>
+                </select>
+                <label for="sort1" class="mr-2">sort2</label><select name="sort2" id="sort2" class="form-control mr-1" style="font-size: 12px;">
+                    <option value="1">option1</option>
+                    <option value="2">option2 </option>
+                    <option value="3">option 3</option>
+                    <option value="4">option 4</option>
+                </select>
+
+                <label for="sort3" class="mr-2">sort3</label><select name="sort3" id="sort3" class="form-control mr-1" style="font-size: 12px;">
+                    <option value="1">option1</option>
+                    <option value="2">option2 </option>
+                    <option value="3">option 3</option>
+                    <option value="4">option 4</option>
+                </select>
+
+                <label for="sort4" class="mr-2">sort4</label><select name="sort4" id="sort4" class="form-control mr-1" style="font-size: 12px;">
+                    <option value="1">option1</option>
+                    <option value="2">option2 </option>
+                    <option value="3">option 3</option>
+                    <option value="4">option 4</option>
+                </select>
+
+                <label for="sort5" class="mr-2">sort5</label><select name="sort5" id="sort5" class="form-control mr-1" style="font-size: 12px;">
+                    <option value="1">option1</option>
+                    <option value="2">option2 </option>
+                    <option value="3">option 3</option>
+                    <option value="4">option 4</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+
+            </div>
+
+
+            <div class="form-group">
+
+            </div>
+
+
+            <div class="form-group">
+
+            </div>
+            <!--
+                end form group
+            -->
+
+
+
+
+
+        </div>
+
+
+    </div> <!--close row div-->
+</form>
+
+
+
+<table class="table" class="propertieslist">
+    <thead>
+        <tr>
+
+            <th scope="col">Property Name</th>
+            <th scope="col">Photo</th>
+
+            <th scope="col">District</th><!--District sa for now, butangan og city nga td sa ubos later-->
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+
+            <th scope="col">Price</th>
+            <th scope="col">Featured</th>
+            <th scope="col">Actions</th><!--balig eight kabuok-->
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var property in Model)
+        {
+
+            // @{
+            int counter = 0;
+            string PhotoPathb = "";
+
+            if (property.Photos != null)
+            {
+                foreach (var photo in property.Photos)
+                {
+
+                    if (counter > 0)
+                    {
+                        break;
+                    }
+                    //if (photo != null) {
+                    PhotoPathb = "/images/properties/" + (photo.Title ?? "noimage.png");
+                    counter++;
+                    //}// close second if
+
+                }// close foreach var photo in prop
+
+            }
+            //}
+
+
+
+
+
+
+
+
+
+
+
+            <tr class="propertieslist2">
+                @*<td><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td><!--para bulk actions ni siya-->*@
+                <td>@property.Name</td>
+                <td>
+                    <img class="" src="@PhotoPathb" alt="Card image cap" height="70px">
+
+                </td><!--photo-->
+                <td>@property.District</td><!--city-->
+
+                <td>@property.Category1</td>
+                <td>@property.Category3</td>
+                <td>@property.Price</td>
+
+                <td>@property.Featured</td>
+                <td>
+
+                    <a href="/properties/update/@property.Id" class="btn btn-primary">edit</a>&nbsp;
+                    <a href="/properties/delete/@property.Id" class="btn btn-primary">delete</a>
+
+                </td>
+
+
+            </tr>
+
+        } <!--close foreach-->
+
+
+
+
+
+
+
+    
+    </tbody>
+</table>

@@ -176,3 +176,41 @@ a.article:hover {
 .btn-info{
     background: blue;
 }
+
+
+/*-------------------------------------------------------------------------------------*/
+/* 9/16 edits */
+.dashboard-panel {
+    /* border-style: dotted; */
+    /* border-color: grey; */
+    /* border-left-width: thin; */
+    /* border-right-width: thin; */
+    /* border-top-width: thin; */
+    padding: 20px;
+    font-size: 11px;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+.dashboard {
+}
+
+.body {
+    /* font-size: 11px; */
+}
+
+.propertieslist {
+}
+
+    .propertieslist td button {
+        /* font-size: 11px; */
+    }
+
+.propertieslist2 {
+    font-size: 12px;
+}
+
+.button1 {
+    font-size: 11px;
+}
